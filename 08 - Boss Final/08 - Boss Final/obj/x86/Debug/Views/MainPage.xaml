@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="_08___Boss_Final.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_08___Boss_Final"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="LightGray">
+
+    <RelativePanel MinWidth="800">
+
+        <!--TextBlock encima de todos-->
+        <Border x:ConnectionId='2'
+            Name="bdTop"
+            RelativePanel.AlignRightWithPanel="True" 
+            RelativePanel.AlignLeftWithPanel="True"
+            Margin="20, 20, 20, 20"
+            BorderBrush="Black"
+            BorderThickness="5">
+            <TextBlock
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    FontSize="20"
+                    Margin="20" 
+                    Height="20"
+                    TextWrapping="Wrap">
+            </TextBlock>
+        </Border>
+        
+        <!--TextBlock justo debajo del TextBlock encima de todos-->
+        <Border x:ConnectionId='3'
+            Name="bdMiddleTop"
+            RelativePanel.AlignRightWithPanel="True" 
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.Below="bdTop"
+            Margin="20, 0, 20, 20"
+            BorderBrush="Black"
+            BorderThickness="5">
+            <TextBlock x:ConnectionId='7'
+                    Name="tbMiddleTop"
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    FontSize="20"
+                    Margin="20, 20, 20, 0" 
+                    Height="80"
+                    TextWrapping="Wrap">
+            </TextBlock>
+        </Border>
+        
+        <!--Borde que contiene las 3 "imágenes" y los 4 textblocks-->
+        <Border x:ConnectionId='4'
+            Name="bdMiddle"
+            BorderBrush="Black"
+            BorderThickness="5"
+            Margin="20, 0, 20, 0"
+            RelativePanel.Above="bdBottom"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="bdMiddleTop"/>
+
+        <!--Grid que contiene a los 3 rectángulos y a los 4 TextBoxes-->
+        <!--Tamaño: 2 columnas, 4 filas-->
+        <Grid
+            RelativePanel.AlignTopWith="bdMiddle"
+            RelativePanel.AlignLeftWith="bdMiddle"
+            RelativePanel.AlignBottomWith="bdMiddle"
+            RelativePanel.AlignRightWith="bdMiddle"
+            Margin="40, 20, 40, 20">
+            <!--Definición del Grid-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!--Un VariableSizedWrapGrid que contiene los 3 rectángulos-->
+            <VariableSizedWrapGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Orientation="Horizontal">
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                    <Rectangle Fill="Red"/>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                    <Rectangle Fill="Green"/>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                    <Rectangle Fill="Purple"/>
+                </Border>
+            </VariableSizedWrapGrid>
+
+            <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="5" Margin="0, 0, 0, 10">
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                       FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="5" Margin="0, 0, 0, 10">
+            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                       FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="5" Margin="0, 0, 0, 10">
+            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                       FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="3" BorderBrush="Black" BorderThickness="5">
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                       FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
+            </Border>
+        </Grid>
+        
+
+        <!--TextBlock abajo del todo-->
+        <Border x:ConnectionId='5'
+            Name="bdBottom"
+            RelativePanel.AlignRightWithPanel="True" 
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignBottomWithPanel="True"
+            Margin="20"
+            BorderBrush="Black"
+            BorderThickness="5">
+            <TextBlock x:ConnectionId='6'
+                    Name="tbBottom"
+                    FontSize="20"
+                    Margin="10, 10, 10, 30" 
+                    Height="10"
+                    TextWrapping="Wrap"/>
+        </Border>
+
+    </RelativePanel>
+</Page>
+
