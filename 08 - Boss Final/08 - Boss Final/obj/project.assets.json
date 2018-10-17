@@ -7005,24 +7005,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oscar\\.nuget\\packages\\": {},
+    "C:\\Users\\ofunes\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oscar\\Desktop\\Segundo DAM\\Interfaces\\08 - Boss Final\\08 - Boss Final\\08 - Boss Final.csproj",
+      "projectUniqueName": "C:\\Users\\ofunes\\Desktop\\GitHub\\Diseño Interfaces\\08 - Boss Final\\08 - Boss Final\\08 - Boss Final.csproj",
       "projectName": "08 - Boss Final",
-      "projectPath": "C:\\Users\\Oscar\\Desktop\\Segundo DAM\\Interfaces\\08 - Boss Final\\08 - Boss Final\\08 - Boss Final.csproj",
-      "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oscar\\Desktop\\Segundo DAM\\Interfaces\\08 - Boss Final\\08 - Boss Final\\obj\\",
+      "projectPath": "C:\\Users\\ofunes\\Desktop\\GitHub\\Diseño Interfaces\\08 - Boss Final\\08 - Boss Final\\08 - Boss Final.csproj",
+      "packagesPath": "C:\\Users\\ofunes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ofunes\\Desktop\\GitHub\\Diseño Interfaces\\08 - Boss Final\\08 - Boss Final\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ofunes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

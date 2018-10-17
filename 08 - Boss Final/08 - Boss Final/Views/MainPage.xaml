@@ -22,7 +22,7 @@
                     Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     FontSize="20"
                     Margin="20" 
-                    Height="20"
+                    Height="30"
                     TextWrapping="Wrap">
             </TextBlock>
         </Border>
@@ -76,16 +76,16 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <!--Un VariableSizedWrapGrid que contiene los 3 rectángulos-->
             <VariableSizedWrapGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Orientation="Horizontal">
-                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="120" Height="120">
                     <Rectangle Fill="Red"/>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="120" Height="120">
                     <Rectangle Fill="Green"/>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="150" Height="150">
+                <Border BorderBrush="Black" BorderThickness="5" Margin="0, 0, 20, 20" Width="120" Height="120">
                     <Rectangle Fill="Purple"/>
                 </Border>
             </VariableSizedWrapGrid>
@@ -95,11 +95,11 @@
                        FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
             </Border>
             <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="5" Margin="0, 0, 0, 10">
-            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
                        FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
             </Border>
             <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="5" Margin="0, 0, 0, 10">
-            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
                        FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
             </Border>
             <Border Grid.Column="1" Grid.Row="3" BorderBrush="Black" BorderThickness="5">
@@ -107,7 +107,6 @@
                        FontSize="20" Margin="10,0,0,0" TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"/>
             </Border>
         </Grid>
-        
 
         <!--TextBlock abajo del todo-->
         <Border

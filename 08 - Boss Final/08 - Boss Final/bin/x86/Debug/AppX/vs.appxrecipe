@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-7NRISIG</Machine>
-    <WindowsUser>Oscar</WindowsUser>
+    <Machine>107-16</Machine>
+    <WindowsUser>ofunes</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>92a27e5b-f0f9-4c13-b6b6-bf9e0a6309ed</PackageIdentityName>
     <PackageIdentityPublisher>CN=ofunes</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>1DF5CF502EAD374E382E0BCA8B931CF37A2C6098DB35A949A42FA6D970AB8014</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>D78E956CE2FCD028BEB5D7F4EFC31C314EEFBD379BBCB0A64AB48B51242FF170</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>92a27e5b-f0f9-4c13-b6b6-bf9e0a6309ed_1.0.0.0_x86__882zjyfzq4nc8</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>92a27e5b-f0f9-4c13-b6b6-bf9e0a6309ed_882zjyfzq4nc8!App</RegisteredUserModeAppID>
     <RegisteredPackageID>92a27e5b-f0f9-4c13-b6b6-bf9e0a6309ed</RegisteredPackageID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-15T16:55:45.563</Modified>
+      <Modified>2018-10-17T08:09:29.848</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\08 - Boss Final.exe">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\08 - Boss Final.exe">
       <PackagePath>entrypoint\08 - Boss Final.exe</PackagePath>
-      <Modified>2018-10-15T16:55:45.135</Modified>
+      <Modified>2018-10-17T08:09:29.211</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.9\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -695,68 +695,68 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-10-04T11:37:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-10-15T11:43:30.709</Modified>
+      <Modified>2018-10-16T11:01:54.342</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.964</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.978</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.991</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.995</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.996</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:36.997</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-24T10:40:45.044</Modified>
+      <Modified>2018-10-16T11:01:37.007</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\08 - Boss Final.xr.xml">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\08 - Boss Final.xr.xml">
       <PackagePath>08 - Boss Final.xr.xml</PackagePath>
-      <Modified>2018-10-15T16:55:44.968</Modified>
+      <Modified>2018-10-17T08:09:28.858</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-15T16:55:44.995</Modified>
+      <Modified>2018-10-17T08:09:28.888</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Views\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
-      <Modified>2018-10-15T16:55:44.996</Modified>
+      <Modified>2018-10-17T08:09:28.889</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-19T20:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-15T16:02:21.286</Modified>
+      <Modified>2018-10-17T07:22:29.881</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Oscar\Desktop\Segundo DAM\Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Core\08 - Boss Final.exe">
+    <AppxPackagedFile Include="C:\Users\ofunes\Desktop\GitHub\Diseño Interfaces\08 - Boss Final\08 - Boss Final\bin\x86\Debug\Core\08 - Boss Final.exe">
       <PackagePath>08 - Boss Final.exe</PackagePath>
-      <Modified>2018-10-15T16:55:45.556</Modified>
+      <Modified>2018-10-17T08:09:29.841</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

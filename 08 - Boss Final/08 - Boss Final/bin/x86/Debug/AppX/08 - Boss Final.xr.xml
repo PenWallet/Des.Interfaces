@@ -7,7 +7,6 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
-      <RootProperty Name="MinWidth" />
       <RootProperty Name="Children" />
       <RootMethod Name="GetAlignRightWithPanel" />
       <RootMethod Name="SetAlignRightWithPanel" />
