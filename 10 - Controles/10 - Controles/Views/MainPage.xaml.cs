@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using _10___Controles.Views;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
 
@@ -34,10 +35,15 @@ namespace _10___Controles
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(Pagina2));
+            this.Frame.Navigate(typeof(Pagina2));
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

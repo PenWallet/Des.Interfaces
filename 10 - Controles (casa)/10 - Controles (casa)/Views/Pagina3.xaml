@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="_10___Controles__casa_.Views.Pagina3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10___Controles__casa_.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemColorGrayTextBrush}">
+
+    <RelativePanel>
+        <StackPanel Name="spTop" Orientation="Vertical" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <ComboBox Header="Elige qué video quieres ver" SelectionChanged="elegirVideo">
+                <ComboBoxItem Content="Golf"/>
+                <ComboBoxItem Content="Shot Putt"/>
+                <ComboBoxItem Content="Casco Slow-Mo"/>
+                <ComboBoxItem Content="Salto de caballo Slow-Mo"/>
+            </ComboBox>
+        </StackPanel>
+        <MediaElement RelativePanel.Below="spTop"
+                      RelativePanel.AlignBottomWithPanel="True"
+                      RelativePanel.AlignLeftWithPanel="True"
+                      RelativePanel.AlignRightWithPanel="True"
+                      Name="reproductor" AutoPlay="True" AreTransportControlsEnabled="True" MediaEnded="rating"/>
+        <Button Name="btnBack" RelativePanel.Below="spTop" RelativePanel.AlignLeftWithPanel="True" Width="50" Height="50" Opacity="0" Click="VolverAtras"/>
+    </RelativePanel>
+</Page>

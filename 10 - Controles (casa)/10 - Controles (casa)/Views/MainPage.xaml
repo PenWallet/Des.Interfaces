@@ -1,0 +1,108 @@
+﻿<Page
+    x:Class="_10___Controles__casa_.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10___Controles__casa_"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemColorGrayTextBrush}">
+
+    <Grid>
+        <!--Definición del Grid: Filas: 4 Columnas: 4-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--StackPanel con los 3 radiobuttons-->
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0">
+            <RadioButton Content="Sí" Tag="Si" Checked="Claro" Foreground="Blue"/>
+            <RadioButton Content="No" Tag="No" Checked="Claro"/>
+            <RadioButton Content="Ji ome" Tag="JiOme" Checked="Claro"/>
+            <Button Content="Guardar"/>
+        </StackPanel>
+
+        <!--Botón con el ToolTip-->
+        <Button Content="¿Que hago?" ToolTipService.ToolTip="Hago cosas, cliquéame si tienes ovos" Grid.Column="1" Grid.Row="0" Click="Button_Click"/>
+
+        <!--Pivot con iconos en el Header y checkboxes dentro-->
+        <Pivot Grid.Row="0" Grid.Column="2" Title="Prueba de Pivoteo">
+            <PivotItem>
+                <PivotItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Section juan"/>
+                        <SymbolIcon Symbol="OneBar"/>
+                    </StackPanel>
+                </PivotItem.Header>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Hola je"/>
+                    <CheckBox Content="Hola" Click="CheckBox_Click"/>
+                    <CheckBox Content="Hola" Click="CheckBox_Click"/>
+                    <CheckBox Content="Hola" Click="CheckBox_Click"/>
+                    <CheckBox Content="Hola" Click="CheckBox_Click"/>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Section tu "/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text=" &#xE710;"/>
+                    </StackPanel>
+                </PivotItem.Header>
+                <TextBlock Text="Que tal"/>
+            </PivotItem>
+            <PivotItem Header="Section zri">
+                <TextBlock Text="Como te va"/>
+            </PivotItem>
+        </Pivot>
+
+        <!--TextBox con intro enabled y con spellcheck enabled-->
+        <TextBox FontSize="20" IsSpellCheckEnabled="True" Grid.Column="3" Grid.Row="0" AcceptsReturn="True"/>
+
+        <!--TextBox para contraseñas-->
+        <PasswordBox Grid.Row="1" Grid.Column="0" Height="40"/>
+
+        <!--ListBox con varios elementos-->
+        <ListBox Grid.Row="1" Grid.Column="1" Width="200">
+            <TextBlock Text="Item 1"/>
+            <TextBlock Text="Item 2"/>
+            <TextBlock Text="Item 3"/>
+            <TextBlock Text="Item 4"/>
+        </ListBox>
+
+        <!--ComboBox con varios elementos-->
+        <ComboBox Grid.Row="1" Grid.Column="2" Header="Elige uno">
+            <TextBlock Text="Item 1"/>
+            <TextBlock Text="Item 2"/>
+            <TextBlock Text="Item 3"/>
+            <TextBlock Text="Item 4"/>
+        </ComboBox>
+
+        <!--SliderBar y ProgressBar unidos con Binding-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3">
+            <Slider Name="slider" Maximum="20" Minimum="0"/>
+            <ProgressBar 
+                Value="{Binding Value,ElementName=slider,Mode=OneWay}"
+                Maximum="{Binding Maximum,ElementName=slider,Mode=OneWay}"
+                Minimum="{Binding Minimum,ElementName=slider,Mode=OneWay}"/>
+        </StackPanel>
+        
+        <!--Diferentes calendarios-->
+        <CalendarView Grid.Row="2" Grid.Column="0"/>
+        <CalendarDatePicker Grid.Row="2" Grid.Column="1"/>
+        <DatePicker Name="dp" Grid.Row="2" Grid.Column="2" DateChanged="esMiCumpleanos"/>
+        
+        
+
+
+    </Grid>
+</Page>

@@ -95,7 +95,9 @@
                 Maximum="{Binding Maximum,ElementName=slider,Mode=OneWay}"
                 Minimum="{Binding Minimum,ElementName=slider,Mode=OneWay}"/>
         </StackPanel>
-        
-        
+
+        <CalendarView Grid.Row="2" Grid.Column="0"/>
+
+
     </Grid>
 </Page>
