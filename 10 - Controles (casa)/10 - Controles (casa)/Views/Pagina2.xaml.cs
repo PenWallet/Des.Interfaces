@@ -30,8 +30,14 @@ namespace _10___Controles__casa_.Views
             rectangulo.Fill = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
         }
 
+        /// <summary>
+        /// Se ejecuta cada vez que se cambia cualquiera de los sliders
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Color_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
+            //Se coge los valores de los sliders y se le cambia el color al rectángulo
             rectangulo.Fill = new SolidColorBrush(Color.FromArgb(255, (byte)slRed.Value, (byte)slGreen.Value, (byte)slBlue.Value));
         }
 

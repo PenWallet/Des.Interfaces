@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemColorGrayTextBrush}">
+    Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
     <Grid>
         <!--Definición del Grid: Filas: 4 Columnas: 4-->
@@ -80,7 +80,7 @@
         </ListBox>
 
         <!--ComboBox con varios elementos-->
-        <ComboBox Grid.Row="1" Grid.Column="2" Header="Elige uno">
+        <ComboBox Grid.Row="1" Grid.Column="2" Header="Elige uno" SelectedIndex="0">
             <TextBlock Text="Item 1"/>
             <TextBlock Text="Item 2"/>
             <TextBlock Text="Item 3"/>
@@ -88,7 +88,7 @@
         </ComboBox>
 
         <!--SliderBar y ProgressBar unidos con Binding-->
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3">
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">
             <Slider Name="slider" Maximum="20" Minimum="0"/>
             <ProgressBar 
                 Value="{Binding Value,ElementName=slider,Mode=OneWay}"

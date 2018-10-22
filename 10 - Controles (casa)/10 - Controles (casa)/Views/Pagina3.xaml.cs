@@ -34,12 +34,21 @@ namespace _10___Controles__casa_.Views
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        /// <summary>
+        /// Se ejecuta cuando se elige otra opción en el ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void elegirVideo(object sender, SelectionChangedEventArgs e)
         {
+            //Variables
             var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
             var content = comboBoxItem.Content as string;
+
+            //Si el contenido no está a nulo
             if (content != null)
             {
+                //Dependiendo de lo que se haya pasado, se cambia el vídeo
                 switch(content.ToString())
                 {
                     case "Golf":
@@ -62,6 +71,11 @@ namespace _10___Controles__casa_.Views
             }
         }
 
+        /// <summary>
+        /// Se ejecuta cuando termina el vídeo y pide una valoración del vídeo que ha terminado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void rating(object sender, RoutedEventArgs e)
         {
             var dialog = new ContentDialog()

@@ -48,8 +48,14 @@ namespace _10___Controles__casa_
 
         }
 
+        /// <summary>
+        /// Se ejecuta cada vez que se altere la fecha del DatePicker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void esMiCumpleanos(object sender, DatePickerValueChangedEventArgs e)
         {
+            //Solo irá a esa página en caso de que la fecha sea igual a la de mi cumpleaños :D
             if(dp.Date.Date.CompareTo(new DateTime(1999, 8, 12)) == 0)
             {
                 this.Frame.Navigate(typeof(Pagina3));

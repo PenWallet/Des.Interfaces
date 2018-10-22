@@ -9,6 +9,7 @@
     Background="{ThemeResource SystemColorGrayTextBrush}">
 
     <Grid>
+        <!--Definiciones del Grid. 2 columnas, 3 filas-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -18,11 +19,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <!--Los sliders de los colores-->
         <Slider Name="slRed" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Header="ROJO" Width="400" Minimum="0" Maximum="255" Value="0" ValueChanged="Color_ValueChanged" StepFrequency="1"/>
         <Slider Name="slGreen" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Header="VERDE" Width="400" Minimum="0" Maximum="255" Value="0" ValueChanged="Color_ValueChanged" StepFrequency="1"/>
         <Slider Name="slBlue" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Header="AZUL" Width="400" Minimum="0" Maximum="255" Value="0" ValueChanged="Color_ValueChanged" StepFrequency="1"/>
-
+        
+        <!--El relative panel con el rectángulo y el botón invisible-->
         <RelativePanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
             <Rectangle Name="rectangulo" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
             <Button Name="btnBack" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Width="50" Height="50" Opacity="0" Click="VolverAtras"/>

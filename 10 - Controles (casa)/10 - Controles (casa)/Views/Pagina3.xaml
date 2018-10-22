@@ -9,6 +9,8 @@
     Background="{ThemeResource SystemColorGrayTextBrush}">
 
     <RelativePanel>
+        
+        <!--Stack panel que contiene -->
         <StackPanel Name="spTop" Orientation="Vertical" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <ComboBox Header="Elige qué video quieres ver" SelectionChanged="elegirVideo">
                 <ComboBoxItem Content="Golf"/>
