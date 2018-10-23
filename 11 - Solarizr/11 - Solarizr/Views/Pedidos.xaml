@@ -6,9 +6,46 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#4292f4">
 
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="lsvCitas" Grid.Column="0" ItemsSource="{Binding}">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="#416af4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Fecha"/>
+                        <TextBlock Grid.Column="1" Text="Nombre"/>
+                        <TextBlock Grid.Column="2" Text="Apellidos"/>
+                        <TextBlock Grid.Column="3" Text="Dirección"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="48" Background="#416af4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding fecha}"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding nombre}"/>
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding apellidos}"/>
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding direccion}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -98,7 +98,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="100" Text="SOLARIZR" FontFamily="Trebuchet MS" Foreground="Orange" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="100" Text="SOLARIZR" FontFamily="Trebuchet MS" Foreground="Orange" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 30, 0, 0"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="30" HorizontalAlignment="Center" FontFamily="Trebuchet MS" Foreground="AntiqueWhite">Usuario:</TextBlock>
