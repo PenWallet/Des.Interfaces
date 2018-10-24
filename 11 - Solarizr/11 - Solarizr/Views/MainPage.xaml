@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource FocusVisualWhiteStrokeThemeBrush}">
     <Page.Resources>
+        <!--Er estilo de botón que no ha sido copiado de Internet-->
         <Style x:Key="ButtonStyle1" TargetType="Button">
             <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
             <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
@@ -83,10 +84,14 @@
         </Style>
     </Page.Resources>
 
+    <!--Grid: Padre, hijo, y espíruto santo que todo lo contiene y todo lo sabe-->
     <Grid>
+        <!--Se define la imagen de fondo en el grid, porque como lo ocupa todo, pues eso-->
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="../Assets/background.jpg"/>
         </Grid.Background>
+        
+        <!--Definición del grid: 3 columnas, 3 filas-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
@@ -98,8 +103,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!--Er TextBox título de la app-->
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="100" Text="SOLARIZR" FontFamily="Trebuchet MS" Foreground="Orange" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 30, 0, 0"/>
 
+        <!--Er stackpanel que contiene los casilleros de escribir y los textblocks-->
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="30" HorizontalAlignment="Center" FontFamily="Trebuchet MS" Foreground="AntiqueWhite">Usuario:</TextBlock>
             <TextBox Name="txtUsuario" FontSize="30" Width="300" Margin="0, 0, 0, 30"/>
@@ -112,6 +119,7 @@
             
         </StackPanel>
 
+        <!--Er botón de enviar-->
         <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="60" Width="200" Content="Iniciar sesión" Margin="20" FontFamily="Trebuchet MS" Foreground="Black" Background="#42f4bc" Opacity="0.85" Style="{StaticResource ButtonStyle1}" Click="Button_Click"/>
     </Grid>
 </Page>

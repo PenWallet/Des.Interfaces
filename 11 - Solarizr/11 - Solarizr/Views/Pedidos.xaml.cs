@@ -15,6 +15,11 @@ using Windows.UI.Xaml.Navigation;
 using Clases;
 using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
+using Windows.Media.Capture;
+using Windows.Storage;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Controls.Maps;
+using Windows.UI;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,14 +30,7 @@ namespace _11___Solarizr.Views
     /// </summary>
     public sealed partial class Pedidos : Page
     {
-        public class contenidoLista
-        {
-            public string fecha { get; set; }
-            public string nombre { get; set; }
-            public string apellidos { get; set; }
-            public string direccion { get; set; }
-        }
-
+        MapRouteView vistaRuta;
         public List<Cita> ContentList = new List<Cita>();
 
         public Pedidos()
@@ -108,7 +106,18 @@ namespace _11___Solarizr.Views
 
         private async void lsvCitas_ItemClick(object sender, ItemClickEventArgs e)
         {
+            mapa.Routes.Remove(vistaRuta);
+
             var cita = e.ClickedItem as Cita;
+
+            //Para mostrar una ruta, necesitamos el punto de inicio, que lo pondremos como el instituto
+            BasicGeoposition bgInstituto = new BasicGeoposition()
+            {
+                Latitude = 37.373774,
+                Longitude = -5.969034
+            };
+            Geopoint instituto = new Geopoint(bgInstituto);
+
 
             //Esto es una pista de dónde empezar a buscar la latitud y la longitud de la dirección del cliente
             BasicGeoposition pista = new BasicGeoposition();
@@ -126,12 +135,42 @@ namespace _11___Solarizr.Views
                 BasicGeoposition posicion = result.Locations[0].Point.Position;
                 Geopoint centro = new Geopoint(posicion);
 
+                //Intentamos buscar una ruta con coche del instituto a la dirección de destino
+                MapRouteFinderResult ruta = await MapRouteFinder.GetDrivingRouteAsync(instituto, centro);
+                if(ruta.Status == MapRouteFinderStatus.Success)
+                {
+                    //Si la encuentra, creamos la MapRouteView (que es lo que el MapControl acepta y se lo añadimos
+                    vistaRuta = new MapRouteView(ruta.Route);
+                    //También podemos cambiar el color de la línea de la ruta
+                    vistaRuta.RouteColor = Colors.Red;
+                    vistaRuta.OutlineColor = Colors.Black;
+
+                    //Y se lo añadimos al MapControl
+                    mapa.Routes.Add(vistaRuta);
+                }
+                
                 //Ahora ponemos bien el mapa
                 mapa.Center = centro;
                 mapa.ZoomLevel = 17;
+                
             }
+            
+        }
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Inicializamos la cámara.
+            CameraCaptureUI cameraUI = new CameraCaptureUI();
 
-            //Sefran hace lo de las fotos
+            //Hacemos una foto a través del botón
+            Windows.Storage.StorageFile capturedMedia =
+                await cameraUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            //Si se ha realizado una foto, la colocamos contiguamente del icono de la cámara.
+            if (capturedMedia != null)
+            {
+                string rutaFoto = capturedMedia.Path;
+                foto.Source = new BitmapImage(new Uri(rutaFoto));
+            }
         }
     }
 }
