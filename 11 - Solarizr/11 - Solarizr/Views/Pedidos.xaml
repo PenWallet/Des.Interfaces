@@ -12,8 +12,8 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
         <ListView x:Name="lsvCitas" Grid.Column="0" ItemsSource="{Binding}" ItemClick="lsvCitas_ItemClick" IsItemClickEnabled="True">
@@ -21,10 +21,10 @@
                 <DataTemplate>
                     <Grid Padding="12" Background="#416af4">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Fecha"/>
                         <TextBlock Grid.Column="1" Text="Nombre"/>
@@ -37,10 +37,10 @@
                 <DataTemplate>
                     <Grid Height="32">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding fecha}" FontSize="12"/>
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding nombre}" FontSize="12"/>
@@ -76,10 +76,10 @@
                Grid.Row="0"
                Name="mapa"
                Margin="10"
-               ZoomLevel="19"
+               ZoomLevel="14"
                ZoomInteractionMode="GestureAndControl"
                TiltInteractionMode="GestureAndControl"
-               MapTapped="mapa_MapTapped"/>
+               MapServiceToken="eltxcqM8nEY0mL4mmytY~jaEIt6f81kULJHHDGDGegw~AtaB8Z2Mo19TKWR8BnBqddQTl5wThsIcWu9rMKFPTP6-niWI5wwmpG8-TpJ0xpnZ"/>
             <TextBox FontSize="20" AcceptsReturn="True" IsSpellCheckEnabled="True" Grid.Row="2" Grid.ColumnSpan="3" Margin="10"/>
             <CheckBox Content="¿Es apta?" Grid.Column="1" Grid.Row="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Button Content="Enviar" Grid.Column="1" Grid.Row="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>

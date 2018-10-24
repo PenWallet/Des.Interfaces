@@ -33,76 +33,103 @@ namespace _11___Solarizr.Views
             public string direccion { get; set; }
         }
 
-        public List<contenidoLista> ContentList = new List<contenidoLista>();
+        public List<Cita> ContentList = new List<Cita>();
 
         public Pedidos()
         {
             this.InitializeComponent();
 
-            contenidoLista cita1 = new contenidoLista()
+            Cita cita1 = new Cita()
             {
-                nombre = "Oscar",
+                IDCliente = 1,
+                nombre = "Oscaru-neko",
                 apellidos = "Funes Trigo",
-                fecha = "23/10/2018",
+                fecha = new DateTime(2018, 10, 22),
                 direccion = "Sevilla, Calle Regina"
             };
-
-            ContentList.Add(cita1);
-            contenidoLista cita2 = new contenidoLista()
+            Cita cita2 = new Cita()
             {
+                IDCliente = 2,
                 nombre = "Sefuran-kun",
                 apellidos = "Flowered Flowers",
-                fecha = "21/10/2018",
+                fecha = new DateTime(2018, 10, 23),
                 direccion = "Sevilla, Calle Oso Panda"
             };
-            ContentList.Add(cita2);
+            Cita cita3 = new Cita()
+            {
+                IDCliente = 3,
+                nombre = "Ferunando-sensei",
+                apellidos = "Gari-ana Domo",
+                fecha = new DateTime(2018, 10, 21),
+                direccion = "Madrid, Calle de Cavanilles, 35"
+            };
+            Cita cita4 = new Cita()
+            {
+                IDCliente = 4,
+                nombre = "Goruje-chan",
+                apellidos = "Watashi no apellido",
+                fecha = new DateTime(2018, 10, 20),
+                direccion = "Japon, Tokyo"
+            };
+            Cita cita5 = new Cita()
+            {
+                IDCliente = 5,
+                nombre = "Migueru Angeru-sensei",
+                apellidos = "Kekkon shita",
+                fecha = new DateTime(2018, 10, 23),
+                direccion = "Sevilla, Paseo de las Delicias"
+            };
+            Cita cita6 = new Cita()
+            {
+                IDCliente = 6,
+                nombre = "Nacho",
+                apellidos = "Baka-chan",
+                fecha = new DateTime(2018, 10, 23),
+                direccion = "United States, Washington, Redmond, Microsoft"
+            };
+            Cita cita7 = new Cita()
+            {
+                IDCliente = 7,
+                nombre = "Asin",
+                apellidos = "Kateai Tos",
+                fecha = new DateTime(2018, 10, 23),
+                direccion = "Area 51"
+            };
             ContentList.Add(cita1);
+            ContentList.Add(cita2);
+            ContentList.Add(cita3);
+            ContentList.Add(cita4);
+            ContentList.Add(cita5);
+            ContentList.Add(cita6);
+            ContentList.Add(cita7);
 
             lsvCitas.DataContext = ContentList;
         }
 
-        private async void launchMaps(string direccion)
+        private async void lsvCitas_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Centro en la calle del cliente
-            var calle = new Uri(@"bingmaps:?q="+direccion);
-
-            // Launch the Windows Maps app
-            var launcherOptions = new Windows.System.LauncherOptions();
-            launcherOptions.TargetApplicationPackageFamilyName = "Microsoft.WindowsMaps_8wekyb3d8bbwe";
-            var success = await Windows.System.Launcher.LaunchUriAsync(calle, launcherOptions);
-        }
-
-        private BasicGeoposition addressToCoordinates(string direccion)
-        {
-            //https://docs.microsoft.com/en-us/windows/uwp/maps-and-location/geocoding
+            var cita = e.ClickedItem as Cita;
 
             //Esto es una pista de dónde empezar a buscar la latitud y la longitud de la dirección del cliente
-            BasicGeoposition queryHint = new BasicGeoposition();
-            queryHint.Latitude = 47.643;
-            queryHint.Longitude = -122.131;
-            Geopoint hintPoint = new Geopoint(queryHint);
+            BasicGeoposition pista = new BasicGeoposition();
+            pista.Latitude = 40.416775;
+            pista.Longitude = -3.703790;
+            Geopoint madrid = new Geopoint(pista);
 
             //Nos devuelve las coordenadas
-            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAsync(direccion, hintPoint, 1);
+            MapLocationFinderResult result = await MapLocationFinder.FindLocationsAsync(cita.direccion, madrid);
 
-            //Esto es el BasicGeoposition con las coordenadas
-            BasicGeoposition posicion = result.Locations[0].Point.Position;
+            //Si encuentra la localización
+            if (result.Status == MapLocationFinderStatus.Success)
+            {
+                //Esto es el BasicGeoposition con las coordenadas
+                BasicGeoposition posicion = result.Locations[0].Point.Position;
+                Geopoint centro = new Geopoint(posicion);
 
-            return posicion;
-        }
-
-        private void mapa_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)
-        {
-            launchMaps("prueba");
-        }
-
-        private void lsvCitas_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Cita cita = (sender as Grid).DataContext as Cita;
-
-            BasicGeoposition cityPosition = new BasicGeoposition() { Latitude = 37.3914105, Longitude = -5.9591776 };
-            Geopoint cityCenter = new Geopoint(cityPosition);
-
+                //Ahora ponemos bien el mapa
+                mapa.Center = centro;
+                mapa.ZoomLevel = 17;
+            }
 
             //Sefran hace lo de las fotos
         }
