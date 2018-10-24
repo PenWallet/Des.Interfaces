@@ -5,23 +5,26 @@
     xmlns:local="using:_11___Solarizr.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="#4292f4">
 
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="lsvCitas" Grid.Column="0" ItemsSource="{Binding}">
+
+        <ListView x:Name="lsvCitas" Grid.Column="0" ItemsSource="{Binding}" ItemClick="lsvCitas_ItemClick" IsItemClickEnabled="True">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Padding="12" Background="#416af4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Fecha"/>
                         <TextBlock Grid.Column="1" Text="Nombre"/>
@@ -32,20 +35,54 @@
             </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="48" Background="#416af4">
+                    <Grid Height="32">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding fecha}"/>
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding nombre}"/>
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding apellidos}"/>
-                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding direccion}"/>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding fecha}" FontSize="12"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding nombre}" FontSize="12"/>
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding apellidos}" FontSize="12"/>
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding direccion}" FontSize="12"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
+        
+        <!--Grid de la derecha que contiene los controles para el informe-->
+        <Grid Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Maps:MapControl
+               Grid.ColumnSpan="3"
+               Grid.Row="0"
+               Name="mapa"
+               Margin="10"
+               ZoomLevel="19"
+               ZoomInteractionMode="GestureAndControl"
+               TiltInteractionMode="GestureAndControl"
+               MapTapped="mapa_MapTapped"/>
+            <TextBox FontSize="20" AcceptsReturn="True" IsSpellCheckEnabled="True" Grid.Row="2" Grid.ColumnSpan="3" Margin="10"/>
+            <CheckBox Content="¿Es apta?" Grid.Column="1" Grid.Row="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Content="Enviar" Grid.Column="1" Grid.Row="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>
