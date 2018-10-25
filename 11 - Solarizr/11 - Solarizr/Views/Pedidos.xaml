@@ -126,12 +126,12 @@
                 >
                 <TextBlock
                     Text="+0"
-                    FontSize="48"
+                    FontSize="25"
                     HorizontalAlignment="Center"
                     />
                 <TextBlock
                     Text="img"
-                    FontSize="48"
+                    FontSize="25"
                     />
             </StackPanel>
 
