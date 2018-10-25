@@ -30,8 +30,8 @@ namespace _11___Solarizr
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //No salta a la página a menos que haya algo escrito en ambos campos
-            if(!txtUsuario.Text.Equals("") && !txtContrasena.Password.Equals(""))
+            //No salta a la página a menos que haya escrito uno de nuestros dos usuarios y algo en el campo de la contraseña
+            if((txtUsuario.Text.Equals("ofunes") || txtUsuario.Text.Equals("jfflorido")) && !txtContrasena.Password.Equals(""))
                 this.Frame.Navigate(typeof(Pedidos));
         }
     }

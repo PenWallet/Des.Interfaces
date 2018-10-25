@@ -93,6 +93,14 @@ namespace _11___Solarizr.Views
                 fecha = new DateTime(2018, 10, 23),
                 direccion = "Area 51"
             };
+            Cita cita8 = new Cita()
+            {
+                IDCliente = 8,
+                nombre = "Jorge",
+                apellidos = "Adasd",
+                fecha = new DateTime(2018, 10, 23),
+                direccion = "Sevilla, Utrera, Calle Almería"
+            };
             ContentList.Add(cita1);
             ContentList.Add(cita2);
             ContentList.Add(cita3);
@@ -100,6 +108,7 @@ namespace _11___Solarizr.Views
             ContentList.Add(cita5);
             ContentList.Add(cita6);
             ContentList.Add(cita7);
+            ContentList.Add(cita8);
 
             lsvCitas.DataContext = ContentList;
         }
