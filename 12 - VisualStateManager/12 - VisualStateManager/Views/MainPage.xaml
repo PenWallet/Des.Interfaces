@@ -6,9 +6,156 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemColorGrayTextBrush}">
 
     <RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Group">
+                <!--Esto ocurre cuando la pantalla es menor que 550 píxeles de ancho-->
+                <VisualState x:Name="MenorQue550">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--StackPanel de botoncitos-->
+                        <Setter Target="spTop.Orientation" Value="Vertical"/>
+                        <Setter Target="spTop.Width" Value="Auto"/>
+                        <Setter Target="spTop.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="spTop.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="spTop.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        
+                        <!--Grid de gatitos-->
+                        <Setter Target="ScrollBar.(RelativePanel.RightOf)" Value="spTop"/>
+                        <Setter Target="ScrollBar.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        <Setter Target="ScrollBar.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="gridPics.ColumnDefinitions[0].Width" Value="*"/>
+                        <Setter Target="gridPics.ColumnDefinitions[1].Width" Value="0"/>
+                        <Setter Target="gridPics.ColumnDefinitions[2].Width" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[0].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[1].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[2].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[3].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[4].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[5].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[6].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[7].Height" Value="Auto"/>
+                        <Setter Target="gridPics.RowDefinitions[8].Height" Value="Auto"/>
+                        <Setter Target="img1.(Grid.Column)" Value="0"/>
+                        <Setter Target="img1.(Grid.Row)" Value="0"/>
+                        <Setter Target="img2.(Grid.Column)" Value="0"/>
+                        <Setter Target="img2.(Grid.Row)" Value="1"/>
+                        <Setter Target="img3.(Grid.Column)" Value="0"/>
+                        <Setter Target="img3.(Grid.Row)" Value="2"/>
+                        <Setter Target="img4.(Grid.Column)" Value="0"/>
+                        <Setter Target="img4.(Grid.Row)" Value="3"/>
+                        <Setter Target="img5.(Grid.Column)" Value="0"/>
+                        <Setter Target="img5.(Grid.Row)" Value="4"/>
+                        <Setter Target="img6.(Grid.Column)" Value="0"/>
+                        <Setter Target="img6.(Grid.Row)" Value="5"/>
+                        <Setter Target="img7.(Grid.Column)" Value="0"/>
+                        <Setter Target="img7.(Grid.Row)" Value="6"/>
+                        <Setter Target="img8.(Grid.Column)" Value="0"/>
+                        <Setter Target="img8.(Grid.Row)" Value="7"/>
+                        <Setter Target="img9.(Grid.Column)" Value="0"/>
+                        <Setter Target="img9.(Grid.Row)" Value="8"/>
+                        <Setter Target="ScrollBar.VerticalScrollBarVisibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <!--Esto ocurre cuando la pantalla es mayor de 550 píxeles de ancho-->
+                <VisualState x:Name="MayorQue550">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--StackPanel de botoncitos-->
+                        <Setter Target="spTop.Orientation" Value="Horizontal"/>
+                        <Setter Target="spTop.Height" Value="Auto"/>
+                        <Setter Target="spTop.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        <Setter Target="spTop.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="spTop.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        
+                        <!--Grid de gatitos-->
+                        <Setter Target="ScrollBar.(RelativePanel.Below)" Value="spTop"/>
+                        <Setter Target="ScrollBar.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="ScrollBar.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="ScrollBar.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="gridPics.ColumnDefinitions[0].Width" Value="*"/>
+                        <Setter Target="gridPics.ColumnDefinitions[1].Width" Value="*"/>
+                        <Setter Target="gridPics.ColumnDefinitions[2].Width" Value="*"/>
+                        <Setter Target="gridPics.RowDefinitions[0].Height" Value="*"/>
+                        <Setter Target="gridPics.RowDefinitions[1].Height" Value="*"/>
+                        <Setter Target="gridPics.RowDefinitions[2].Height" Value="*"/>
+                        <Setter Target="gridPics.RowDefinitions[3].Height" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[4].Height" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[5].Height" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[6].Height" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[7].Height" Value="0"/>
+                        <Setter Target="gridPics.RowDefinitions[8].Height" Value="0"/>
+                        <Setter Target="img1.(Grid.Column)" Value="0"/>
+                        <Setter Target="img1.(Grid.Row)" Value="0"/>
+                        <Setter Target="img2.(Grid.Column)" Value="0"/>
+                        <Setter Target="img2.(Grid.Row)" Value="1"/>
+                        <Setter Target="img3.(Grid.Column)" Value="0"/>
+                        <Setter Target="img3.(Grid.Row)" Value="2"/>
+                        <Setter Target="img4.(Grid.Column)" Value="1"/>
+                        <Setter Target="img4.(Grid.Row)" Value="0"/>
+                        <Setter Target="img5.(Grid.Column)" Value="1"/>
+                        <Setter Target="img5.(Grid.Row)" Value="1"/>
+                        <Setter Target="img6.(Grid.Column)" Value="1"/>
+                        <Setter Target="img6.(Grid.Row)" Value="2"/>
+                        <Setter Target="img7.(Grid.Column)" Value="2"/>
+                        <Setter Target="img7.(Grid.Row)" Value="0"/>
+                        <Setter Target="img8.(Grid.Column)" Value="2"/>
+                        <Setter Target="img8.(Grid.Row)" Value="1"/>
+                        <Setter Target="img9.(Grid.Column)" Value="2"/>
+                        <Setter Target="img9.(Grid.Row)" Value="2"/>
+                        <Setter Target="ScrollBar.VerticalScrollBarVisibility" Value="Disabled"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!--Stack panel superior con los botones-->
+        <StackPanel Name="spTop" Background="LightSkyBlue">
+            <AppBarButton Name="abbAdd" Icon="Add" Label="Añadir" Margin="5"/>
+            <AppBarButton Name="abbGo" Icon="Go" Label="Ir" Margin="5"/>
+            <AppBarButton Name="abbTarget" Icon="Target" Label="Objetivo" Margin="5"/>
+            <AppBarButton Name="abbAddFriend" Icon="AddFriend" Label="Añadir" Margin="5"/>
+        </StackPanel>
+
+        <!--Grid de los gatitos-->
+        <ScrollViewer Name="ScrollBar">
+            <Grid Name="gridPics">
+                <!--Definición del grid. 3 columnas, 9 filas-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Fotos-->
+                <Image Name="img1" Source="../Assets/cat1.jpeg"/>
+                <Image Name="img2" Source="../Assets/cat2.jpeg"/>
+                <Image Name="img3" Source="../Assets/cat3.jpeg"/>
+                <Image Name="img4" Source="../Assets/cat4.jpeg"/>
+                <Image Name="img5" Source="../Assets/cat3.jpeg"/>
+                <Image Name="img6" Source="../Assets/cat1.jpeg"/>
+                <Image Name="img7" Source="../Assets/cat2.jpeg"/>
+                <Image Name="img8" Source="../Assets/cat2.jpeg"/>
+                <Image Name="img9" Source="../Assets/cat1.jpeg"/>
+            </Grid>
+        </ScrollViewer>
         
     </RelativePanel>
 </Page>

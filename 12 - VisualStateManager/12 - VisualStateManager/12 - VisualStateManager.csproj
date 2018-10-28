@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{C4249DB9-EEB9-4BD0-8EB4-1167D2808A47}</ProjectGuid>
+    <ProjectGuid>{5CF22EB2-438D-41B5-A7CC-25F9879E3E38}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_12___VisualStateManager</RootNamespace>
@@ -107,6 +107,10 @@
     <None Include="12 - VisualStateManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cat1.jpeg" />
+    <Content Include="Assets\cat2.jpeg" />
+    <Content Include="Assets\cat3.jpeg" />
+    <Content Include="Assets\cat4.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

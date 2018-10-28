@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="80bf2fca-0a16-453b-9caa-2b0aebb46aa9"
-    Publisher="CN=ofunes"
+    Name="c025f804-e0fe-4978-948b-512fc4a87308"
+    Publisher="CN=Oscar"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="80bf2fca-0a16-453b-9caa-2b0aebb46aa9" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="c025f804-e0fe-4978-948b-512fc4a87308" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>12 - VisualStateManager</DisplayName>
-    <PublisherDisplayName>ofunes</PublisherDisplayName>
+    <PublisherDisplayName>Oscar</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
