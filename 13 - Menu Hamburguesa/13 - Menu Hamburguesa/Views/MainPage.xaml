@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="_13___Menu_Hamburguesa.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_13___Menu_Hamburguesa"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <StackPanel Name="spTop" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <Button Name="HamburgerMenu" Content="&#59165;" FontFamily="Segoe MDL2 Assets" FontSize="25" Click="HamburgerMenu_Click" Padding="8"/>
+        </StackPanel>
+
+        <SplitView Name="splitView" DisplayMode="CompactOverlay" OpenPaneLength="250" RelativePanel.Below="spTop" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            <SplitView.Pane>
+                <ListView SelectionChanged="ListView_SelectionChanged">
+                    <ListViewItem Name="opcion1">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#59407;" FontFamily="Segoe MDL2 Assets" FontSize="30" Margin="-5, 0,0,0"/>
+                            <TextBlock Text="Pagina Principal" Margin="10, 0, 0, 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Name="opcion2">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#59575;" FontFamily="Segoe MDL2 Assets" FontSize="30" Margin="-5, 0,0,0"/>
+                            <TextBlock Text="Pagina 1" Margin="10, 0, 0, 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Name="opcion3">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon Glyph="&#59587;" FontFamily="Segoe MDL2 Assets" FontSize="30" Margin="-5, 0,0,0"/>
+                            <TextBlock Text="Pagina 2" Margin="10, 0, 0, 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </SplitView.Pane>
+        </SplitView>
+
+    </RelativePanel>
+</Page>
