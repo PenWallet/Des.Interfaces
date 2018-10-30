@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using _13___Menu_Hamburguesa.Views;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -34,7 +35,18 @@ namespace _13___Menu_Hamburguesa
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(opcion1.IsSelected)
+            {
+                Frame.Navigate(typeof(MainPage));
+            }
+            else if (opcion2.IsSelected)
+            {
+                pennyFrame.Navigate(typeof(Pagina1));
+            }
+            else if (opcion3.IsSelected)
+            {
+                pennyFrame.Navigate(typeof(Pagina2));
+            }
         }
     }
 }
