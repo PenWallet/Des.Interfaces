@@ -7,12 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     NavigationCacheMode="Required"
-    Background="{ThemeResource SystemColorGrayTextBrush}">
+    Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
     <RelativePanel>
-        <StackPanel Name="spTop" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+        <StackPanel Name="spTop" Orientation="Horizontal" RelativePanel.AlignLeftWithPanel="True">
             <Button Name="HamburgerMenu" Content="&#59165;" FontFamily="Segoe MDL2 Assets" FontSize="25" Click="HamburgerMenu_Click" Padding="8"/>
         </StackPanel>
+
+        <TextBlock Name="txtTitulo" Text="Prueba" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" RelativePanel.RightOf="spTop" RelativePanel.Above="splitView" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
 
         <SplitView Name="splitView" DisplayMode="CompactOverlay" OpenPaneLength="250" RelativePanel.Below="spTop" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
             <SplitView.Pane>

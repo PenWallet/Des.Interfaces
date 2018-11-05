@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="_15___Ejercicio_gordo_de_binding.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_15___Ejercicio_gordo_de_binding"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_15___Ejercicio_gordo_de_binding.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <!--Two Way para que personaSeleccionada cambie con cada clic-->
+        <ListView Name="lista" ItemsSource="{Binding listadoPersonas}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Width="Auto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="44" Padding="12">
+                        <FontIcon Glyph="&#xE716;" FontFamily="Segoe MDL2 Assets" Width="auto" Height="auto"/>
+                        <TextBlock Text="{Binding Path=nombre}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="{Binding Path=apellidos}" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Name="grid" RelativePanel.RightOf="lista" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Cambiar datos a la persona" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center"/>
+
+        </Grid>
+    </RelativePanel>
+</Page>
