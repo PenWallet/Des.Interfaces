@@ -1,7 +1,9 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace Models.Entidades
+namespace Entidades
 {
     public class ClsPersona
     {
@@ -34,8 +36,6 @@ namespace Models.Entidades
         public string direccion { get; set; }
         public string telefono { get; set; }
         #endregion
-
-        
 
 
     }
