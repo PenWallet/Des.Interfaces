@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="_16___CRUDPersonasUWP___UI.Views.AddPerson"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_16___CRUDPersonasUWP___UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemColorGrayTextBrush}">
+
+    <Page.DataContext>
+        <vm:AddPersonViewModel/>
+    </Page.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Crear persona" Grid.ColumnSpan="3" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        <TextBlock Text="Nombre:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <TextBox Name="txtNombre" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,10,0"/>
+        <TextBlock Text="Apellidos:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <TextBox Name="txtApellidos" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,10,0"/>
+        <TextBlock Text="Fecha de nacimiento:" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <TextBox Name="txtFecha" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="10,0,10,0"/>
+        <TextBlock Text="Dirección:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <TextBox Name="txtDireccion" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Margin="10,0,10,0"/>
+        <TextBlock Text="Teléfono:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <TextBox Name="txtTelefono" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Margin="10,0,10,0"/>
+        <TextBlock Text="Departamento:" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+        <ComboBox Name="cbDepartamento" Grid.Column="1" Grid.Row="6" Width="auto" VerticalAlignment="Center" Margin="10, 0, 0, 0" ItemsSource="{Binding listadoDepartamentos}"
+                      DisplayMemberPath="nombreDepartamento" SelectedValuePath="idDepartamento" SelectedValue="1"/>
+        
+        <!--TextBlocks de errores-->
+        <TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorNombre"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorApellidos"/>
+        <TextBlock Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorFecha"/>
+        <TextBlock Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorDireccion"/>
+        <TextBlock Grid.Column="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorTelefono"/>
+        <TextBlock Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Red" Name="txtErrorDepartamento"/>
+
+        <!--Botón de agregar-->
+        <Button Name="btnAdd" Content="Añadir persona" Height="50" Grid.Row="7" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Click="btnAdd_Click"/>
+    </Grid>
+</Page>

@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
+using BL.Listados;
 
 namespace ViewModels
 {
@@ -27,7 +29,6 @@ namespace ViewModels
             set
             {
                 _listadoPersonas = value;
-  
             }
         }
 
@@ -63,7 +64,10 @@ namespace ViewModels
         public MainPageViewModel()
         {
             //Cargar listado de personas
-            listadoPersonas = ClsListadoPersonas.rellenar();
+            listadoPersonas = ClsListadoPersonas_BL.listadoCompletoPersonas_BL();
+
+            //Cargar listado de departamentos
+            listadoDepartamentos = clsListadoDepartamentos_BL.listadoCompletoDepartamentos_BL();
         }
         #endregion
 

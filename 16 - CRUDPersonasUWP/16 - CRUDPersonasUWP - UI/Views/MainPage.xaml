@@ -1,4 +1,5 @@
 ﻿<Page
+    Name="page"
     x:Class="_15___Ejercicio_gordo_de_binding.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,27 +8,43 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:ViewModels"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemColorGrayTextBrush}">
 
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
 
     <RelativePanel>
-        <!--Two Way para que personaSeleccionada cambie con cada clic-->
-        <ListView Name="lista" ItemsSource="{Binding listadoPersonas}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Width="Auto">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Height="44" Padding="12">
-                        <FontIcon Glyph="&#xE716;" FontFamily="Segoe MDL2 Assets" Width="auto" Height="auto"/>
-                        <TextBlock Text="{Binding Path=nombre}" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Text="{Binding Path=apellidos}" VerticalAlignment="Center" Margin="4,0,0,0"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
 
-        <Grid Name="grid" RelativePanel.RightOf="lista" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+        <!--StackPanel con la lista y el botón de añadir-->
+        <StackPanel Name="spLista" Orientation="Vertical"
+                    Width="auto"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True" 
+                    RelativePanel.Above="gridBotones"  
+                    >
+
+            <AppBarButton Name="btnAdd" Icon="AddFriend" Height="auto" HorizontalAlignment="Stretch" Click="btnAdd_Click"/>
+
+            <!--Two Way para que personaSeleccionada cambie con cada clic-->
+            <ListView Name="lvPersonas" ItemsSource="{Binding listadoPersonas}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="44" Padding="12">
+                            <FontIcon Glyph="&#xE716;" FontFamily="Segoe MDL2 Assets" Width="auto" Height="auto"/>
+                            <TextBlock Text="{Binding Path=nombre}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <TextBlock Text="{Binding Path=apellidos}" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <Grid Name="grid" 
+              RelativePanel.RightOf="spLista" 
+              RelativePanel.AlignTopWithPanel="True" 
+              RelativePanel.AlignBottomWithPanel="True" 
+              RelativePanel.AlignRightWithPanel="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -40,21 +57,41 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Cambiar datos a la persona" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center"/>
-            <TextBlock Text="Nombre:" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.nombre, Mode=TwoWay}"/>
-            <TextBlock Text="Apellidos:" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.apellidos, Mode=TwoWay}"/>
-            <TextBlock Text="Fecha de nacimiento:" Grid.Row="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.fechaNac, Mode=TwoWay}"/>
-            <TextBlock Text="Dirección:" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.direccion, Mode=TwoWay}"/>
-            <TextBlock Text="Teléfono:" Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.telefono, Mode=TwoWay}"/>
-            <TextBlock Text="Departamento:" Grid.Row="6" VerticalAlignment="Center"/>
-             
+            <TextBlock Text="Nombre:" Grid.Row="1" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.nombre, Mode=TwoWay}" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="Apellidos:" Grid.Row="2" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.apellidos, Mode=TwoWay}" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="Fecha de nacimiento:" Grid.Row="3" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.fechaNac, Mode=TwoWay}" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="Dirección:" Grid.Row="4" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.direccion, Mode=TwoWay}" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="Teléfono:" Grid.Row="5" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.telefono, Mode=TwoWay}" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="Departamento:" Grid.Row="6" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <ComboBox Name="cbDepartamento" Grid.Column="1" Grid.Row="6" Width="auto" VerticalAlignment="Center" Margin="10, 0, 0, 0" ItemsSource="{Binding listadoDepartamentos}"
+                      DisplayMemberPath="nombreDepartamento" SelectedValuePath="idDepartamento" SelectedValue="{Binding personaSeleccionada.idDepartamento, Mode=TwoWay}"/>
+
+            <Button Name="btnUpdate" Content="😂😂Actualizar😂😂" HorizontalAlignment="Stretch" Grid.Row="7" Grid.ColumnSpan="2" FontSize="25" Click="btnUpdate_Click"/>
+        </Grid>
+
+        <Grid Name="gridBotones" 
+              RelativePanel.AlignLeftWithPanel="True" 
+              RelativePanel.AlignBottomWithPanel="True"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <AppBarButton Name="btnDelete" Grid.Column="0" Icon="Delete" HorizontalAlignment="Stretch" Click="btnDelete_Click"/>
+            <AppBarButton Name="btnRefresh" Grid.Column="1" Icon="Refresh" HorizontalAlignment="Stretch" Click="btnRefresh_Click"/>
         </Grid>
     </RelativePanel>
 </Page>

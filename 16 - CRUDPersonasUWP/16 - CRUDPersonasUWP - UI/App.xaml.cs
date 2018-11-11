@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using _15___Ejercicio_gordo_de_binding;
+using Windows.UI.Core;
 
 namespace _16___CRUDPersonasUWP___UI
 {
@@ -49,6 +51,7 @@ namespace _16___CRUDPersonasUWP___UI
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.Navigated += OnNavigated;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -57,6 +60,15 @@ namespace _16___CRUDPersonasUWP___UI
 
                 // Poner el marco en la ventana actual.
                 Window.Current.Content = rootFrame;
+
+                // Register a handler for BackRequested events and set the
+                // visibility of the Back button
+                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    rootFrame.CanGoBack ?
+                    AppViewBackButtonVisibility.Visible :
+                    AppViewBackButtonVisibility.Collapsed;
             }
 
             if (e.PrelaunchActivated == false)
@@ -83,6 +95,15 @@ namespace _16___CRUDPersonasUWP___UI
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
+        private void OnNavigated(object sender, NavigationEventArgs e)
+        {
+            // Each time a navigation event occurs, update the Back button's visibility
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                ((Frame)sender).CanGoBack ?
+                AppViewBackButtonVisibility.Visible :
+                AppViewBackButtonVisibility.Collapsed;
+        }
+
         /// <summary>
         /// Se invoca al suspender la ejecución de la aplicación. El estado de la aplicación se guarda
         /// sin saber si la aplicación se terminará o se reanudará con el contenido
@@ -95,6 +116,17 @@ namespace _16___CRUDPersonasUWP___UI
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Guardar el estado de la aplicación y detener toda actividad en segundo plano
             deferral.Complete();
+        }
+
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (rootFrame.CanGoBack)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
         }
     }
 }
