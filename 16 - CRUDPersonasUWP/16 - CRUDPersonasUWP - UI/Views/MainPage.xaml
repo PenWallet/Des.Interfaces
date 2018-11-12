@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:ViewModels"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemColorGrayTextBrush}">
+    Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
     <Page.DataContext>
         <vm:MainPageViewModel/>
@@ -90,8 +90,8 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <AppBarButton Name="btnDelete" Grid.Column="0" Icon="Delete" HorizontalAlignment="Stretch" Click="btnDelete_Click"/>
-            <AppBarButton Name="btnRefresh" Grid.Column="1" Icon="Refresh" HorizontalAlignment="Stretch" Click="btnRefresh_Click"/>
+            <AppBarButton Name="btnDelete" Grid.Column="0" Icon="Delete" HorizontalAlignment="Stretch" Command="{Binding Path=eliminarCommand}"/>
+            <AppBarButton Name="btnRefresh" Grid.Column="1" Icon="Refresh" HorizontalAlignment="Stretch" Click="{Binding Path=actualizarListadoCommand}"/>
         </Grid>
     </RelativePanel>
 </Page>
