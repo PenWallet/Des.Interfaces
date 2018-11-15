@@ -35,6 +35,7 @@ namespace ViewModels
             set
             {
                 _listadoPersonas = value;
+                NotifyPropertyChanged("listadoPersonas");
             }
         }
 
@@ -51,7 +52,6 @@ namespace ViewModels
                 //Llamamos a CanExecute de eliminar para que compruebe si debe habilitar el comando
                 _eliminarCommand.RaiseCanExecuteChanged();
                 NotifyPropertyChanged("personaSeleccionada");
-
             }
         }
 
@@ -72,7 +72,7 @@ namespace ViewModels
         {
             get
             {
-                _eliminarCommand = new DelegateCommand(EliminarCommand_Execute, EliminarCommand_CanExecute);
+                _eliminarCommand = new DelegateCommand(EliminarCommand_Executed, EliminarCommand_CanExecute);
                 return _eliminarCommand;
             }
         }
@@ -81,7 +81,7 @@ namespace ViewModels
         {
             get
             {
-                _actualizarListadoCommand = new DelegateCommand(ActualizarListadoCommand_Execute);
+                _actualizarListadoCommand = new DelegateCommand(ActualizarListadoCommand_Executed);
                 return _actualizarListadoCommand;
             }
         }
@@ -99,16 +99,17 @@ namespace ViewModels
         }
         #endregion
 
-        #region "Funciones"
+
+        #region "Comandos"
         /*
-         * Al utilizar la clase clsVMbase, no hace falta esta funciín
+         * Al utilizar la clase clsVMbase, no hace falta esta función
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         */
 
-        private async void EliminarCommand_Execute()
+        private async void EliminarCommand_Executed()
         {
             try
             {
@@ -143,9 +144,16 @@ namespace ViewModels
         /// <summary>
         /// Función que actualiza el listado de personas
         /// </summary>
-        private void ActualizarListadoCommand_Execute()
+        private void ActualizarListadoCommand_Executed()
         {
-            
+            personaSeleccionada = null;
+            listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+
+        }
+
+        private void ActualizarPersonaCommand_Executed()
+        {
+
         }
 
         /// <summary>
@@ -161,7 +169,10 @@ namespace ViewModels
 
             return habilitado;
         }
+        #endregion
 
+
+        #region "Funciones"
         private async void mostrarError()
         {
             var dialog = new MessageDialog("No se pudo borrar la persona");
@@ -180,7 +191,6 @@ namespace ViewModels
             await dialog.ShowAsync();
         }
         #endregion
-
 
     }
 }

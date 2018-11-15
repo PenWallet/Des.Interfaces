@@ -26,12 +26,13 @@ namespace _15___Ejercicio_gordo_de_binding
         {
             this.InitializeComponent();
         }
-
+        
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AddPerson));
         }
 
+        /*
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             ClsPersona p1 = (ClsPersona)lvPersonas.SelectedItem;
@@ -96,6 +97,6 @@ namespace _15___Ejercicio_gordo_de_binding
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        }*/
     }
 }

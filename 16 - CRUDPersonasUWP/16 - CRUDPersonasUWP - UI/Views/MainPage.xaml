@@ -75,7 +75,7 @@
             <ComboBox Name="cbDepartamento" Grid.Column="1" Grid.Row="6" Width="auto" VerticalAlignment="Center" Margin="10, 0, 0, 0" ItemsSource="{Binding listadoDepartamentos}"
                       DisplayMemberPath="nombreDepartamento" SelectedValuePath="idDepartamento" SelectedValue="{Binding personaSeleccionada.idDepartamento, Mode=TwoWay}"/>
 
-            <Button Name="btnUpdate" Content="😂😂Actualizar😂😂" HorizontalAlignment="Stretch" Grid.Row="7" Grid.ColumnSpan="2" FontSize="25" Click="btnUpdate_Click"/>
+            <Button Name="btnUpdate" Content="😂😂Actualizar😂😂" HorizontalAlignment="Stretch" Grid.Row="7" Grid.ColumnSpan="2" FontSize="25" Command="{Binding Path=ActualizarPersonaCommand_Executed}"/>
         </Grid>
 
         <Grid Name="gridBotones" 
@@ -91,7 +91,7 @@
             </Grid.RowDefinitions>
 
             <AppBarButton Name="btnDelete" Grid.Column="0" Icon="Delete" HorizontalAlignment="Stretch" Command="{Binding Path=eliminarCommand}"/>
-            <AppBarButton Name="btnRefresh" Grid.Column="1" Icon="Refresh" HorizontalAlignment="Stretch" Click="{Binding Path=actualizarListadoCommand}"/>
+            <AppBarButton Name="btnRefresh" Grid.Column="1" Icon="Refresh" HorizontalAlignment="Stretch" Command="{Binding Path=actualizarListadoCommand}"/>
         </Grid>
     </RelativePanel>
 </Page>
