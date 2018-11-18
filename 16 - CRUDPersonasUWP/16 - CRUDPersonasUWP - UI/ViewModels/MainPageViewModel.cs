@@ -473,10 +473,10 @@ namespace ViewModels
             }
 
             //Validar fecha de nacimiento
-            if (personaSeleccionada.fechaNac == new DateTimeOffset(new DateTime(1928, 1, 1)))
+            if (personaSeleccionada.fechaNac.Date == new DateTime(1918, 1, 1).Date)
             {
                 eFecha = true;
-                mensajeErrorFechaNac = "¡La fecha no puede estar vacía!";
+                mensajeErrorFechaNac = "Enga abuelete, no mientas anda";
             }
             else
             {

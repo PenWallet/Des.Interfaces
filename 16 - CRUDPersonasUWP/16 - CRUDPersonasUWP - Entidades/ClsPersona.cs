@@ -14,7 +14,7 @@ namespace Entidades
             this.idPersona = 0;
             this.nombre = "";
             this.apellidos = "";
-            this.fechaNac = new DateTimeOffset(new DateTime(1928, 1, 1));
+            this.fechaNac = new DateTimeOffset(new DateTime(1918, 1, 1, 0, 0, 0));
             this.direccion = "";
             this.telefono = "";
         }
