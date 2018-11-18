@@ -56,7 +56,7 @@ namespace DAL.Manejadoras
                     p1.idPersona = (int)miLector["IDPersona"];
                     p1.nombre = (string)miLector["nombrePersona"];
                     p1.apellidos = (string)miLector["apellidosPersona"];
-                    p1.fechaNac = (DateTime)miLector["fechaNacimiento"];
+                    p1.fechaNac = new DateTimeOffset((DateTime)miLector["fechaNacimiento"]);
                     p1.telefono = (string)miLector["telefono"];
                     p1.direccion = (string)miLector["direccion"];
                     p1.idDepartamento = (int)miLector["IDDepartamento"];
@@ -140,7 +140,7 @@ namespace DAL.Manejadoras
                 //Creamos los parámetros
                 miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = p1.nombre;
                 miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = p1.apellidos;
-                miComando.Parameters.Add("@fecha", System.Data.SqlDbType.Date).Value = p1.fechaNac;
+                miComando.Parameters.Add("@fecha", System.Data.SqlDbType.Date).Value = p1.fechaNac.DateTime;
                 miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = p1.telefono;
                 miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = p1.direccion;
                 miComando.Parameters.Add("@idDep", System.Data.SqlDbType.Int).Value = p1.idDepartamento;
@@ -183,7 +183,7 @@ namespace DAL.Manejadoras
                 miComando.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = p1.idPersona;
                 miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = p1.nombre;
                 miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = p1.apellidos;
-                miComando.Parameters.Add("@fecha", System.Data.SqlDbType.Date).Value = p1.fechaNac;
+                miComando.Parameters.Add("@fecha", System.Data.SqlDbType.Date).Value = p1.fechaNac.DateTime;
                 miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = p1.telefono;
                 miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = p1.direccion;
                 miComando.Parameters.Add("@idDep", System.Data.SqlDbType.Int).Value = p1.idDepartamento;

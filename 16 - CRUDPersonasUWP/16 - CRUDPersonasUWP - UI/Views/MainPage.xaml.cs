@@ -7,11 +7,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using _16___CRUDPersonasUWP___UI.Views;
 using Windows.UI.Popups;
-using Entidades;
-using BL.Manejadoras;
-using ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,11 +21,6 @@ namespace _15___Ejercicio_gordo_de_binding
         public MainPage()
         {
             this.InitializeComponent();
-        }
-        
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(AddPerson));
         }
 
         /*

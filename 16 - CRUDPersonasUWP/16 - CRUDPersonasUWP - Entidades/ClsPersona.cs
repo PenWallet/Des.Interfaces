@@ -10,7 +10,13 @@ namespace Entidades
         #region Constructor por defecto
         public ClsPersona()
         {
-
+            this.idDepartamento = 0;
+            this.idPersona = 0;
+            this.nombre = "";
+            this.apellidos = "";
+            this.fechaNac = new DateTimeOffset(new DateTime(1928, 1, 1));
+            this.direccion = "";
+            this.telefono = "";
         }
         #endregion
 
@@ -32,7 +38,7 @@ namespace Entidades
         public int idPersona { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
-        public DateTime fechaNac { get; set; }
+        public DateTimeOffset fechaNac { get; set; }
         public string direccion { get; set; }
         public string telefono { get; set; }
         #endregion
