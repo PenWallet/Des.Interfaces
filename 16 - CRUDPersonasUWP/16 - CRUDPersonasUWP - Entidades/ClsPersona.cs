@@ -43,6 +43,19 @@ namespace Entidades
         public string telefono { get; set; }
         #endregion
 
+        #region "Métodos"
+        public bool Contains(string busqueda)
+        {
+            bool siContiene = false;
+            string nombreCompleto = this.nombre+" "+this.apellidos;
 
+            if(nombreCompleto.Contains(busqueda, StringComparison.CurrentCultureIgnoreCase))
+            {
+                siContiene = true;
+            }
+
+            return siContiene;
+        }
+        #endregion
     }
 }

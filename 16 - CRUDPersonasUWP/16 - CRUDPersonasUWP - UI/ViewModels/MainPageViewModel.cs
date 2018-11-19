@@ -16,7 +16,8 @@ namespace ViewModels
     public class MainPageViewModel : clsVMBase
     {
         #region Propiedades privadas
-        private ObservableCollection<ClsPersona> _listadoPersonas;
+        private ObservableCollection<ClsPersona> _listadoPersonasCompleto;
+        private ObservableCollection<ClsPersona> _listadoPersonasBusqueda;
         private ClsPersona _personaSeleccionada;
         private List<ClsDepartamento> _listadoDepartamentos;
         private DelegateCommand _eliminarCommand;
@@ -29,21 +30,36 @@ namespace ViewModels
         private string _mensajeErrorDireccion;
         private string _mensajeErrorTelefono;
         private string _mensajeErrorDepartamento;
+        private string _textoBusqueda;
         #endregion
 
         #region Propiedades públicas
         //public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<ClsPersona> listadoPersonas
+        public ObservableCollection<ClsPersona> listadoPersonasCompleto
         {
             get
             {
-                return _listadoPersonas;
+                return _listadoPersonasCompleto;
             }
 
             set
             {
-                _listadoPersonas = value;
-                NotifyPropertyChanged("listadoPersonas");
+                _listadoPersonasCompleto = value;
+                NotifyPropertyChanged("listadoPersonasCompleto");
+            }
+        }
+
+        public ObservableCollection<ClsPersona> listadoPersonasBusqueda
+        {
+            get
+            {
+                return _listadoPersonasBusqueda;
+            }
+
+            set
+            {
+                _listadoPersonasBusqueda = value;
+                NotifyPropertyChanged("listadoPersonasBusqueda");
             }
         }
 
@@ -206,6 +222,21 @@ namespace ViewModels
                 return _mensajeErrorDepartamento;
             }
         }
+
+        public string textoBusqueda
+        {
+            set
+            {
+                _textoBusqueda = value;
+                listadoPersonasBusqueda = new ObservableCollection<ClsPersona>(listadoPersonasCompleto.Where(x => x.Contains(_textoBusqueda)).ToList());
+                NotifyPropertyChanged("listadoPersonasBusqueda");
+            }
+
+            get
+            {
+                return _textoBusqueda;
+            }
+        }
         #endregion
 
 
@@ -213,7 +244,8 @@ namespace ViewModels
         public MainPageViewModel()
         {
             //Cargar listado de personas
-            listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasBusqueda = listadoPersonasCompleto;
 
             //Cargar listado de departamentos
             listadoDepartamentos = clsListadoDepartamentos_BL.listadoCompletoDepartamentos_BL();
@@ -260,7 +292,7 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoCrear();
-                            listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                             personaSeleccionada = new ClsPersona();
                         }
                         else
@@ -297,7 +329,7 @@ namespace ViewModels
                     else if (filas == 1)
                     {
                         mostrarExitoBorrar();
-                        listadoPersonas.Remove(personaSeleccionada);
+                        listadoPersonasCompleto.Remove(personaSeleccionada);
                         NotifyPropertyChanged("listadoPersonas");
                         //listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                     }
@@ -313,7 +345,7 @@ namespace ViewModels
         /// </summary>
         private void ActualizarListadoCommand_Executed()
         {
-            listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
             personaSeleccionada = new ClsPersona();
         }
 
@@ -348,7 +380,7 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoActualizar();
-                            listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                             personaSeleccionada = new ClsPersona();
                         }
                         else
