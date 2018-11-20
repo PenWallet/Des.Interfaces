@@ -35,20 +35,6 @@ namespace ViewModels
 
         #region Propiedades públicas
         //public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<ClsPersona> listadoPersonasCompleto
-        {
-            get
-            {
-                return _listadoPersonasCompleto;
-            }
-
-            set
-            {
-                _listadoPersonasCompleto = value;
-                NotifyPropertyChanged("listadoPersonasCompleto");
-            }
-        }
-
         public ObservableCollection<ClsPersona> listadoPersonasBusqueda
         {
             get
@@ -228,8 +214,9 @@ namespace ViewModels
             set
             {
                 _textoBusqueda = value;
-                listadoPersonasBusqueda = new ObservableCollection<ClsPersona>(listadoPersonasCompleto.Where(x => x.Contains(_textoBusqueda)).ToList());
+                listadoPersonasBusqueda = new ObservableCollection<ClsPersona>(_listadoPersonasCompleto.Where(x => x.Contains(_textoBusqueda)).ToList());
                 NotifyPropertyChanged("listadoPersonasBusqueda");
+                NotifyPropertyChanged("textoBusqueda");
             }
 
             get
@@ -244,14 +231,17 @@ namespace ViewModels
         public MainPageViewModel()
         {
             //Cargar listado de personas
-            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-            listadoPersonasBusqueda = listadoPersonasCompleto;
+            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasBusqueda = _listadoPersonasCompleto;
 
             //Cargar listado de departamentos
             listadoDepartamentos = clsListadoDepartamentos_BL.listadoCompletoDepartamentos_BL();
 
             //Ponemos una persona por defecto
             _personaSeleccionada = new ClsPersona();
+
+            //Poner el texto de búsqueda como "" por defecto
+            _textoBusqueda = "";
         }
         #endregion
 
@@ -292,8 +282,9 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoCrear();
-                            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                             personaSeleccionada = new ClsPersona();
+                            textoBusqueda = "";
                         }
                         else
                             mostrarWTF();
@@ -329,9 +320,9 @@ namespace ViewModels
                     else if (filas == 1)
                     {
                         mostrarExitoBorrar();
-                        listadoPersonasCompleto.Remove(personaSeleccionada);
-                        NotifyPropertyChanged("listadoPersonas");
-                        //listadoPersonas = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                        _listadoPersonasCompleto.Remove(personaSeleccionada);
+                        textoBusqueda = "";
+                        personaSeleccionada = new ClsPersona();
                     }
                     else
                         mostrarWTF();
@@ -345,8 +336,10 @@ namespace ViewModels
         /// </summary>
         private void ActualizarListadoCommand_Executed()
         {
-            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasBusqueda = _listadoPersonasCompleto;
             personaSeleccionada = new ClsPersona();
+            textoBusqueda = "";
         }
 
         /// <summary>
@@ -380,7 +373,8 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoActualizar();
-                            listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            textoBusqueda = _textoBusqueda; //Para actualizar el listado con lo que haya escrito, en caso de que lo haya
                             personaSeleccionada = new ClsPersona();
                         }
                         else
