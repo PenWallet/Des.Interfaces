@@ -106,6 +106,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Listados\ClsListadoCategorias_BL.cs" />
+    <Compile Include="Listados\ClsListadoPersonajes_BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Prueba_examen_20181121_BL.rd.xml" />
   </ItemGroup>
@@ -125,7 +127,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Listados\" />
     <Folder Include="Manejadoras\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

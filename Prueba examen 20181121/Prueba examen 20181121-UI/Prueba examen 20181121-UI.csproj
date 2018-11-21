@@ -110,6 +110,13 @@
     <None Include="Prueba examen 20181121-UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Imagenes\Aatrox.png" />
+    <Content Include="Assets\Imagenes\Ahri.png" />
+    <Content Include="Assets\Imagenes\akali.png" />
+    <Content Include="Assets\Imagenes\alistar.png" />
+    <Content Include="Assets\Imagenes\amumu.png" />
+    <Content Include="Assets\Imagenes\anivia.png" />
+    <Content Include="Assets\Imagenes\Annie.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

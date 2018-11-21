@@ -20,6 +20,7 @@ namespace Entidades
     ///     Resistencia: Double, consultable, modificable
     ///     VelMovimiento: Double, consultable, modificable
     ///     IDCategoria: Int, consultable, modificable
+    ///     rutaImagen: String, consultable, modificable
     /// </summary>
     public class ClsCampeon
     {
@@ -35,6 +36,7 @@ namespace Entidades
         public double resistencia { get; set; }
         public double velMovimiento { get; set; }
         public int IDCategoria { get; set; }
+        public string rutaImagen { get; set; }
         #endregion
 
         #region Constructores
@@ -51,6 +53,7 @@ namespace Entidades
             this.resistencia = 0;
             this.velMovimiento = 0;
             this.IDCategoria = 0;
+            this.rutaImagen = "";
         }
 
         public ClsCampeon(int ID, string nombre, string alias, double vida, double regeneracion,
@@ -68,6 +71,7 @@ namespace Entidades
             this.resistencia = resistencia;
             this.velMovimiento = velMovimiento;
             this.IDCategoria = IDCategoria;
+            this.rutaImagen = $"../Assets/Imagenes/"+this.nombre+".png";
         }
         #endregion
     }

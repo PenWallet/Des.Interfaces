@@ -106,6 +106,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Conexion\clsMyConnection.cs" />
+    <Compile Include="Listados\ClsListadoCategorias_DAL.cs" />
+    <Compile Include="Listados\ClsListadoPersonajes_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Prueba_examen_20181121_DAL.rd.xml" />
   </ItemGroup>
@@ -121,8 +124,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Conexion\" />
-    <Folder Include="Listados\" />
     <Folder Include="Manejadoras\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

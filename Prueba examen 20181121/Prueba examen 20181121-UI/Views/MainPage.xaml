@@ -5,10 +5,81 @@
     xmlns:local="using:Prueba_examen_20181121_UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewModels"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemColorGrayTextBrush}">
 
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- RelativePanel con los dos listados -->
+        <RelativePanel Grid.Column="0">
+            <TextBlock Name="txtTitle" Text="Seleccione una categoría" FontSize="40" Margin="10" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+            
+            <!-- ComboBox con las categorías disponibles -->
+            <ComboBox Name="cbCategorias" Width="auto" VerticalAlignment="Center" ItemsSource="{Binding listadoCategorias}"
+                      DisplayMemberPath="nombre" SelectedValuePath="ID" SelectedValue="{Binding idCategoriaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      RelativePanel.Below="txtTitle" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+            
+            <!-- Listado de personajes dependiendo de la categoría -->
+            <ListView Name="lvPersonas" ItemsSource="{Binding listadoCampeonesPorCategoria}" SelectedItem="{Binding campeonSeleccionado, Mode=TwoWay}" 
+                      RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="cbCategorias"
+                      Margin="5, 10, 5, 0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="auto" Padding="12">
+                            <Image Width="50" Height="50" Source="{Binding Path=rutaImagen}"/>
+                            <TextBlock Text="{Binding Path=nombre}" VerticalAlignment="Center" Margin="12,0,0,0" FontSize="20"/>
+                            <TextBlock Text="{Binding Path=alias}" VerticalAlignment="Bottom" Margin="8,0,0,0" FontSize="15"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RelativePanel>
+        
+        <!-- RelativePanel con la información de los campeones -->
+        <RelativePanel Grid.Column="1" Visibility="{Binding infoVisibility}">
+            <!-- Título -->
+            <TextBlock Name="txtTitle2" Text="Información del personaje" FontSize="40" Margin="10" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+
+            <!--Los sliders y la información -->
+            <!-- Cabecera -->
+            <Image Name="img" Width="100" Height="100" Source="{Binding campeonSeleccionado.rutaImagen}" Margin="10" RelativePanel.Below="txtTitle2" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+            <TextBlock Name="nombre" Text="{Binding campeonSeleccionado.nombre}" FontSize="30" HorizontalAlignment="Center" RelativePanel.Below="img" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+            <TextBlock Name="alias" Text="{Binding campeonSeleccionado.alias}" FontSize="15" Margin="0, -5, 0, 0" HorizontalAlignment="Center" RelativePanel.Below="nombre" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+
+            <!-- Sliders -->
+            <StackPanel Name="vida" HorizontalAlignment="Center" Margin="20" RelativePanel.Below="alias" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                <TextBlock Text="Vida" FontSize="15"/>
+                <ProgressBar Minimum="0" Maximum="1000" Value="{Binding campeonSeleccionado.vida}" Width="600" Height="10"/>
+
+                <TextBlock Text="Regeneración" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="0" Maximum="10" Value="{Binding campeonSeleccionado.regeneracion}" Width="600" Height="10"/>
+
+                <TextBlock Text="Daño" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="0" Maximum="80" Value="{Binding campeonSeleccionado.danno}" Width="600" Height="10"/>
+
+                <TextBlock Text="Armadura" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="0" Maximum="30" Value="{Binding campeonSeleccionado.armadura}" Width="600" Height="10"/>
+
+                <TextBlock Text="Velocidad de ataque" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="0" Maximum="1" Value="{Binding campeonSeleccionado.velAtaque}" Width="600" Height="10"/>
+
+                <TextBlock Text="Resistencia" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="25" Maximum="35" Value="{Binding campeonSeleccionado.resistencia}" Width="600" Height="10"/>
+
+                <TextBlock Text="Velocidad de movimiento" FontSize="15" Margin="0, 20, 0, 0"/>
+                <ProgressBar Minimum="300" Maximum="400" Value="{Binding campeonSeleccionado.velMovimiento}" Width="600" Height="10"/>
+            </StackPanel>
+            
+
+        </RelativePanel>
     </Grid>
 </Page>
