@@ -5,10 +5,46 @@
     xmlns:local="using:Examen_20181120_UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <TextBlock Grid.Row="0" Text="Buscaminas versión Somos 2.0 (stable release)" FontSize="30" HorizontalAlignment="Center"/>
+
+        <!-- GridView con las casillas -->
+        <GridView Grid.Row="1" ItemsSource="{Binding listadoCasillas}" SelectedItem="{Binding casillaSeleccionada, Mode=TwoWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" BorderBrush="{Binding Path=borderColor}" BorderThickness="5">
+                        <Image Source="{Binding Path=rutaImagen}" Height="100" Width="100"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <!-- Es un stackpanel de 1 solo item, pero se supone que aquí se podrían meter controles adicionales -->
+        <StackPanel Grid.Row="2" Height="Auto" Background="LightSkyBlue" Orientation="Horizontal">
+            <!-- AppBarButton para volver a cargar la partida -->
+            <AppBarButton Icon="Refresh" Command="{Binding nuevaPartidaCommand}">
+                <!-- Esto permite pulsar F5 para hacer el mismo comando -->
+                <AppBarButton.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="F5" Modifiers="None"/>
+                </AppBarButton.KeyboardAccelerators>
+            </AppBarButton>
+
+            <TextBlock Text="Puntuación:" VerticalAlignment="Bottom" FontSize="15" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="{Binding contadorSalvados}" VerticalAlignment="Bottom" FontSize="15" Margin="4, 0, 0, 0"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -337,7 +337,7 @@ namespace ViewModels
         private void ActualizarListadoCommand_Executed()
         {
             _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-            listadoPersonasBusqueda = _listadoPersonasCompleto;
+            textoBusqueda = "";
             personaSeleccionada = new ClsPersona();
             textoBusqueda = "";
         }
@@ -374,8 +374,7 @@ namespace ViewModels
                         {
                             mostrarExitoActualizar();
                             _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-                            textoBusqueda = _textoBusqueda; //Para actualizar el listado con lo que haya escrito, en caso de que lo haya
-                            personaSeleccionada = new ClsPersona();
+                            textoBusqueda = _textoBusqueda;
                         }
                         else
                             mostrarWTF();
