@@ -60,12 +60,6 @@ namespace ViewModels
             {
                 _personaSeleccionada = value;
 
-                //Llamamos a CanExecute de eliminar, actualizar y crear para que compruebe si debe habilitar el comando
-                _eliminarCommand.RaiseCanExecuteChanged();
-                _crearCommand.RaiseCanExecuteChanged();
-                _actualizarPersonaCommand.RaiseCanExecuteChanged();
-                NotifyPropertyChanged("personaSeleccionada");
-
                 //Cambiar los mensajes de error en caso de que estén aún en pantalla
                 mensajeErrorApellidos = "";
                 mensajeErrorDepartamento = "";
@@ -73,6 +67,12 @@ namespace ViewModels
                 mensajeErrorFechaNac = "";
                 mensajeErrorNombre = "";
                 mensajeErrorTelefono = "";
+
+                //Llamamos a CanExecute de eliminar, actualizar y crear para que compruebe si debe habilitar el comando
+                _eliminarCommand.RaiseCanExecuteChanged();
+                _crearCommand.RaiseCanExecuteChanged();
+                _actualizarPersonaCommand.RaiseCanExecuteChanged();
+                NotifyPropertyChanged("personaSeleccionada");
             }
         }
 
@@ -275,7 +275,7 @@ namespace ViewModels
 
                     if ((int)result.Id == 0)
                     {
-                        int filas = ClsManejadoraPersona_BL.CrearPersona_BL(personaSeleccionada);
+                        int filas = ClsManejadoraPersona_BL.CrearPersona_BL(_personaSeleccionada);
 
                         if (filas == 0)
                             mostrarErrorCrear();
@@ -313,16 +313,16 @@ namespace ViewModels
 
                 if ((int)result.Id == 0)
                 {
-                    int filas = ClsManejadoraPersona_BL.BorrarPorID_BL(personaSeleccionada.idPersona);
+                    int filas = ClsManejadoraPersona_BL.BorrarPorID_BL(_personaSeleccionada.idPersona);
 
                     if (filas == 0)
                         mostrarErrorBorrar();
                     else if (filas == 1)
                     {
                         mostrarExitoBorrar();
-                        _listadoPersonasCompleto.Remove(personaSeleccionada);
-                        textoBusqueda = "";
+                        _listadoPersonasCompleto.Remove(_personaSeleccionada);
                         personaSeleccionada = new ClsPersona();
+                        textoBusqueda = _textoBusqueda;
                     }
                     else
                         mostrarWTF();
@@ -337,7 +337,6 @@ namespace ViewModels
         private void ActualizarListadoCommand_Executed()
         {
             _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-            textoBusqueda = "";
             personaSeleccionada = new ClsPersona();
             textoBusqueda = "";
         }
@@ -366,7 +365,7 @@ namespace ViewModels
 
                     if ((int)result.Id == 0)
                     {
-                        int filas = ClsManejadoraPersona_BL.ActualizarPersona_BL(personaSeleccionada);
+                        int filas = ClsManejadoraPersona_BL.ActualizarPersona_BL(_personaSeleccionada);
 
                         if (filas == 0)
                             mostrarErrorActualizar();
@@ -374,7 +373,8 @@ namespace ViewModels
                         {
                             mostrarExitoActualizar();
                             _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-                            textoBusqueda = _textoBusqueda;
+                            personaSeleccionada = new ClsPersona();
+                            textoBusqueda = "";
                         }
                         else
                             mostrarWTF();
@@ -395,7 +395,7 @@ namespace ViewModels
         {
             bool habilitado = false;
 
-            if (personaSeleccionada != null && personaSeleccionada.idPersona != 0)
+            if (_personaSeleccionada != null && _personaSeleccionada.idPersona != 0)
                 habilitado = true;
 
             return habilitado;
@@ -411,7 +411,7 @@ namespace ViewModels
         {
             bool habilitado = false;
 
-            if (personaSeleccionada == null || personaSeleccionada.idPersona == 0)
+            if (_personaSeleccionada == null || _personaSeleccionada.idPersona == 0)
                 habilitado = true;
 
             return habilitado;
@@ -474,7 +474,7 @@ namespace ViewModels
             bool eNombre, eApellidos, eFecha, eDireccion, eTelefono, eDepartamento, total;
 
             //Validar nombre
-            if (personaSeleccionada.nombre == "")
+            if (_personaSeleccionada.nombre == "")
             {
                 eNombre = true;
                 mensajeErrorNombre = "¡El nombre no puede estar vacío!";
@@ -486,7 +486,7 @@ namespace ViewModels
             }
 
             //Validar apellidos
-            if (personaSeleccionada.apellidos == "")
+            if (_personaSeleccionada.apellidos == "")
             {
                 eApellidos = true;
                 mensajeErrorApellidos = "¡Los apellidos no pueden estar vacíos!";
@@ -498,7 +498,7 @@ namespace ViewModels
             }
 
             //Validar fecha de nacimiento
-            if (personaSeleccionada.fechaNac.Date == new DateTime(1918, 1, 1).Date)
+            if (_personaSeleccionada.fechaNac.Date == new DateTime(1918, 1, 1).Date)
             {
                 eFecha = true;
                 mensajeErrorFechaNac = "Enga abuelete, no mientas anda";
@@ -510,7 +510,7 @@ namespace ViewModels
             }
 
             //Validar dirección
-            if (personaSeleccionada.direccion == "")
+            if (_personaSeleccionada.direccion == "")
             {
                 eDireccion = true;
                 mensajeErrorDireccion = "¡La dirección no puede estar vacía!";
@@ -522,7 +522,7 @@ namespace ViewModels
             }
 
             //Validar teléfono
-            if (personaSeleccionada.telefono == "")
+            if (_personaSeleccionada.telefono == "")
             {
                 eTelefono = true;
                 mensajeErrorTelefono = "¡El teléfono no puede estar vacío!";
@@ -534,7 +534,7 @@ namespace ViewModels
             }
 
             //Validar departamento
-            if (personaSeleccionada.idDepartamento == 0)
+            if (_personaSeleccionada.idDepartamento == 0)
             {
                 eDepartamento = true;
                 mensajeErrorDepartamento = "¡El departamento no puede estar vacío!";
