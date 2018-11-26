@@ -14,6 +14,10 @@
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
+    
+    <Page.Resources>
+        <vm:DateTimeOffsetToStringConverter x:Key="ConversorFechas"/>
+    </Page.Resources>
 
     <RelativePanel>
 
@@ -95,6 +99,7 @@
             <!-- Fecha de nacimiento -->
             <TextBlock Text="Fecha de nacimiento:" Grid.Row="3" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
             <DatePicker Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Date="{Binding Path=personaSeleccionada.fechaNac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10, 0, 0, 0"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Width="300" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding Path=personaSeleccionada.fechaNac, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ConversorFechas}}" Margin="10, 0, 0, 0"/>
             <TextBlock Text="{Binding mensajeErrorFechaNac}" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Margin="10, 0, 10, 0" Foreground="Red"/>
 
             <!-- Dirección -->
