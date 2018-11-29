@@ -58,21 +58,24 @@ namespace ViewModels
 
             set
             {
-                _personaSeleccionada = value;
+                if(_personaSeleccionada != value)
+                {
+                    _personaSeleccionada = value;
 
-                //Cambiar los mensajes de error en caso de que estén aún en pantalla
-                mensajeErrorApellidos = "";
-                mensajeErrorDepartamento = "";
-                mensajeErrorDireccion = "";
-                mensajeErrorFechaNac = "";
-                mensajeErrorNombre = "";
-                mensajeErrorTelefono = "";
+                    //Cambiar los mensajes de error en caso de que estén aún en pantalla
+                    mensajeErrorApellidos = "";
+                    mensajeErrorDepartamento = "";
+                    mensajeErrorDireccion = "";
+                    mensajeErrorFechaNac = "";
+                    mensajeErrorNombre = "";
+                    mensajeErrorTelefono = "";
 
-                //Llamamos a CanExecute de eliminar, actualizar y crear para que compruebe si debe habilitar el comando
-                _eliminarCommand.RaiseCanExecuteChanged();
-                _crearCommand.RaiseCanExecuteChanged();
-                _actualizarPersonaCommand.RaiseCanExecuteChanged();
-                NotifyPropertyChanged("personaSeleccionada");
+                    //Llamamos a CanExecute de eliminar, actualizar y crear para que compruebe si debe habilitar el comando
+                    _eliminarCommand.RaiseCanExecuteChanged();
+                    _crearCommand.RaiseCanExecuteChanged();
+                    _actualizarPersonaCommand.RaiseCanExecuteChanged();
+                    NotifyPropertyChanged("personaSeleccionada");
+                } 
             }
         }
 

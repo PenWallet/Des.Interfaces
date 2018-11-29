@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using _15___Ejercicio_gordo_de_binding;
+using UI;
 using Windows.UI.Core;
 
 namespace _16___CRUDPersonasUWP___UI

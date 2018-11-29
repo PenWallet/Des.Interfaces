@@ -10,7 +10,7 @@ namespace Entidades
         #region Constructor por defecto
         public ClsPersona()
         {
-            this.idDepartamento = 0;
+            this.idDepartamento = 1;
             this.idPersona = 0;
             this.nombre = "";
             this.apellidos = "";
