@@ -106,8 +106,12 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Conexion\clsMyConnection.cs" />
     <Compile Include="Conexion\ClsUriBase.cs" />
+    <Compile Include="Listados\ClsListadoDepartamentos_DAL.cs" />
     <Compile Include="Listados\ClsListadoPersonas_DAL.cs" />
+    <Compile Include="Manejadoras\ClsManejadoraDepartamento_DAL.cs" />
+    <Compile Include="Manejadoras\ClsManejadoraPersona_DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\DAL.rd.xml" />
   </ItemGroup>
@@ -125,9 +129,7 @@
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manejadoras\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -10,9 +10,9 @@ namespace BL.Manejadoras
 {
     public class ClsManejadoraPersona_BL
     {
-        public static ClsPersona PersonaPorID_BL(int id)
+        public static Task<ClsPersona> PersonaPorID_BL(int id)
         {
-            ClsPersona p1 = ClsManejadoraPersona_DAL.PersonaPorID_DAL(id);
+            var p1 = ClsManejadoraPersona_DAL.PersonaPorID_DAL(id);
 
             return p1;
         }

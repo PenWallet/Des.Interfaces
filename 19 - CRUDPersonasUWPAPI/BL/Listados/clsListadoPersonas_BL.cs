@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Entidades;
 using DAL.Listados;
+using System.Threading.Tasks;
 
 namespace BL.Listados
 {
@@ -10,9 +11,9 @@ namespace BL.Listados
         /// Función que devuelve la lista tras pasar las reglas necesarias
         /// </summary>
         /// <returns>List<ClsPersona></returns>
-        static public List<ClsPersona> listadoCompletoPersonas_BL()
+        static public Task<List<ClsPersona>> listadoCompletoPersonas_BL()
         {
-            List<ClsPersona> lista = ClsListadoPersonas_DAL.listadoCompletoPersonas();
+            var lista = ClsListadoPersonas_DAL.obtenerListadoPersonas_DAL();
 
             return lista;
         }

@@ -14,11 +14,11 @@
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
-    
+
     <Page.Resources>
         <vm:DateTimeOffsetToStringConverter x:Key="ConversorFechas"/>
     </Page.Resources>
-
+    
     <RelativePanel>
 
         <!-- Grid de la lista y los botones de actualizar, borrar y la barra de búsqueda -->

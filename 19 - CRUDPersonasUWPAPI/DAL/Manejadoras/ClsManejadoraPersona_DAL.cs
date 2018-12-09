@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Listados;
 using Entidades;
-using DAL.Conexion;
 using Windows.Web.Http;
 using Newtonsoft.Json;
+using DAL.Conexion;
 
-namespace DAL.Listados
+namespace DAL.Manejadoras
 {
-
-    public class ClsListadoPersonas_DAL
+    public class ClsManejadoraPersona_DAL
     {
-        public static async Task<List<ClsPersona>> obtenerListadoPersonas_DAL()
+        public static async Task<ClsPersona> PersonaPorID_DAL(int id)
         {
-            var listado = new List<ClsPersona>();
+            var persona = new ClsPersona();
             HttpClient client = new HttpClient();
-            Uri uriCompleta = new Uri($"{ClsUriBase.uri}personas");
+            Uri uriCompleta = new Uri($"{ClsUriBase.uri}personas/{id}");
 
             //Cogemos las cabeceras por defecto 
             var headers = client.DefaultRequestHeaders;
@@ -47,14 +48,29 @@ namespace DAL.Listados
                 httpResponse.EnsureSuccessStatusCode();
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
 
-                listado = JsonConvert.DeserializeObject<List<ClsPersona>>(httpResponseBody);
+                persona = JsonConvert.DeserializeObject<ClsPersona>(httpResponseBody);
             }
             catch (Exception ex)
             {
                 httpResponseBody = "Error: " + ex.HResult.ToString("X") + " Message: " + ex.Message;
             }
 
-            return listado;
+            return persona;
+        }
+
+        public static int BorrarPorID_DAL(int id)
+        {
+            return 0;
+        }
+
+        public static int CrearPersona_DAL(ClsPersona p1)
+        {
+            return 0;
+        }
+
+        public static int ActualizarPersona_DAL(ClsPersona p1)
+        {
+            return 0;
         }
     }
 }
