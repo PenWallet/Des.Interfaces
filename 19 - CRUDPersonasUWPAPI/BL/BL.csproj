@@ -107,7 +107,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Listados\clsListadoDepartamentos_BL.cs" />
-    <Compile Include="Listados\clsListadoPersonas_BL.cs" />
+    <Compile Include="Listados\ClsListadoPersonas_BL.cs" />
     <Compile Include="Manejadoras\ClsManejadoraDepartamento_BL.cs" />
     <Compile Include="Manejadoras\ClsManejadoraPersona_BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

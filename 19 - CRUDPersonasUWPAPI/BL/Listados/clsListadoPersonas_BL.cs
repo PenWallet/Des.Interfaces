@@ -11,9 +11,9 @@ namespace BL.Listados
         /// Función que devuelve la lista tras pasar las reglas necesarias
         /// </summary>
         /// <returns>List<ClsPersona></returns>
-        static public Task<List<ClsPersona>> listadoCompletoPersonas_BL()
+        public static async Task<List<ClsPersona>> listadoCompletoPersonas_BL()
         {
-            var lista = ClsListadoPersonas_DAL.obtenerListadoPersonas_DAL();
+            List<ClsPersona> lista = await ClsListadoPersonas_DAL.obtenerListadoPersonas_DAL();
 
             return lista;
         }

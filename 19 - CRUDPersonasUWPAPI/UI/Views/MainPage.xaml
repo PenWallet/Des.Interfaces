@@ -1,12 +1,12 @@
 ﻿<Page
     Name="page"
-    x:Class="_15___Ejercicio_gordo_de_binding.MainPage"
+    x:Class="UI.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UI"
+    xmlns:local="using:UI.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:ViewModels"
+    xmlns:vm="using:UI.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource AppBarBackgroundThemeBrush}"
     MinWidth="800">
@@ -18,7 +18,7 @@
     <Page.Resources>
         <vm:DateTimeOffsetToStringConverter x:Key="ConversorFechas"/>
     </Page.Resources>
-    
+
     <RelativePanel>
 
         <!-- Grid de la lista y los botones de actualizar, borrar y la barra de búsqueda -->
@@ -36,7 +36,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
+
             <!-- Barra de búsqueda(TextBox) -->
             <StackPanel Orientation="Horizontal" Height="40" Grid.ColumnSpan="2" Grid.Row="0">
                 <FontIcon Glyph="&#xE71E;" FontFamily="Segoe MDL2 Assets" Width="auto" Height="auto" Margin="10, 0, 5, 0"/>

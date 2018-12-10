@@ -11,7 +11,7 @@ using Windows.UI.Popups;
 using BL.Manejadoras;
 using System.Collections.ObjectModel;
 
-namespace ViewModels
+namespace UI.ViewModels
 {
     public class MainPageViewModel : clsVMBase
     {
@@ -230,9 +230,7 @@ namespace ViewModels
         #region Constructor por defecto
         public MainPageViewModel()
         {
-            //Cargar listado de personas
-            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-            listadoPersonasBusqueda = _listadoPersonasCompleto;
+            cargarTodoAsincrono();
 
             //Cargar listado de departamentos
             listadoDepartamentos = clsListadoDepartamentos_BL.listadoCompletoDepartamentos_BL();
@@ -282,7 +280,7 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoCrear();
-                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                             personaSeleccionada = new ClsPersona();
                             textoBusqueda = "";
                         }
@@ -334,9 +332,9 @@ namespace ViewModels
         /// <summary>
         /// Función que actualiza el listado de personas
         /// </summary>
-        private void ActualizarListadoCommand_Executed()
+        private async void ActualizarListadoCommand_Executed()
         {
-            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
             personaSeleccionada = new ClsPersona();
             textoBusqueda = "";
         }
@@ -372,7 +370,7 @@ namespace ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoActualizar();
-                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
                             personaSeleccionada = new ClsPersona();
                             textoBusqueda = "";
                         }
@@ -420,6 +418,12 @@ namespace ViewModels
 
 
         #region "Funciones"
+        public async void cargarTodoAsincrono()
+        {
+            //Cargar listado de personas
+            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            listadoPersonasBusqueda = _listadoPersonasCompleto;
+        }
         private async void mostrarErrorBorrar()
         {
             var dialog = new MessageDialog("No se pudo borrar la persona");
