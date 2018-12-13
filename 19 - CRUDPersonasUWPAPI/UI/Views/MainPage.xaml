@@ -43,8 +43,10 @@
                 <TextBox Height="30" Text="{Binding textoBusqueda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="250" VerticalAlignment="Center" Margin="5, 0, 5, 0"/>
             </StackPanel>
 
+            <ProgressRing IsActive="{Binding listadoPersonasBusqueda.IsNotCompleted}" Grid.Row="1" Grid.ColumnSpan="2"/>
+
             <!-- Lista de personas -->
-            <ListView Name="lvPersonas" ItemsSource="{Binding listadoPersonasBusqueda}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay}" 
+            <ListView Name="lvPersonas" ItemsSource="{Binding listadoPersonasBusqueda.Result}" SelectedItem="{Binding personaSeleccionada, Mode=TwoWay}" 
                       MinWidth="300" Width="auto" Grid.Row="1" Grid.ColumnSpan="2" >
                 <ListView.ItemTemplate>
                     <DataTemplate>

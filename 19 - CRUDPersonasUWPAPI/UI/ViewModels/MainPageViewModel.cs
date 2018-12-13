@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using Windows.UI.Popups;
 using BL.Manejadoras;
 using System.Collections.ObjectModel;
+using UI.ViewModels;
 
 namespace UI.ViewModels
 {
@@ -17,7 +18,7 @@ namespace UI.ViewModels
     {
         #region Propiedades privadas
         private ObservableCollection<ClsPersona> _listadoPersonasCompleto;
-        private ObservableCollection<ClsPersona> _listadoPersonasBusqueda;
+        private NotifyTaskCompletion<ObservableCollection<ClsPersona>> _listadoPersonasBusqueda;
         private ClsPersona _personaSeleccionada;
         private List<ClsDepartamento> _listadoDepartamentos;
         private DelegateCommand _eliminarCommand;
@@ -34,8 +35,7 @@ namespace UI.ViewModels
         #endregion
 
         #region Propiedades públicas
-        //public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<ClsPersona> listadoPersonasBusqueda
+        public NotifyTaskCompletion<ObservableCollection<ClsPersona>> listadoPersonasBusqueda
         {
             get
             {
@@ -214,7 +214,7 @@ namespace UI.ViewModels
             set
             {
                 _textoBusqueda = value;
-                listadoPersonasBusqueda = new ObservableCollection<ClsPersona>(_listadoPersonasCompleto.Where(x => x.Contains(_textoBusqueda)).ToList());
+                //listadoPersonasBusqueda.Result = _listadoPersonasCompleto.Where(x => x.Contains(_textoBusqueda));
                 NotifyPropertyChanged("listadoPersonasBusqueda");
                 NotifyPropertyChanged("textoBusqueda");
             }
@@ -280,7 +280,8 @@ namespace UI.ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoCrear();
-                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = _listadoPersonasBusqueda.Result;
                             personaSeleccionada = new ClsPersona();
                             textoBusqueda = "";
                         }
@@ -318,7 +319,7 @@ namespace UI.ViewModels
                     else if (filas == 1)
                     {
                         mostrarExitoBorrar();
-                        _listadoPersonasCompleto.Remove(_personaSeleccionada);
+                        _listadoPersonasBusqueda.Result.Remove(_personaSeleccionada);
                         personaSeleccionada = new ClsPersona();
                         textoBusqueda = _textoBusqueda;
                     }
@@ -334,7 +335,8 @@ namespace UI.ViewModels
         /// </summary>
         private async void ActualizarListadoCommand_Executed()
         {
-            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            _listadoPersonasCompleto = _listadoPersonasBusqueda.Result;
             personaSeleccionada = new ClsPersona();
             textoBusqueda = "";
         }
@@ -370,7 +372,8 @@ namespace UI.ViewModels
                         else if (filas == 1)
                         {
                             mostrarExitoActualizar();
-                            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+                            _listadoPersonasCompleto = _listadoPersonasBusqueda.Result;
                             personaSeleccionada = new ClsPersona();
                             textoBusqueda = "";
                         }
@@ -418,12 +421,15 @@ namespace UI.ViewModels
 
 
         #region "Funciones"
-        public async void cargarTodoAsincrono()
+        private void cargarTodoAsincrono()
         {
             //Cargar listado de personas
-            _listadoPersonasCompleto = new ObservableCollection<ClsPersona>(await ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
-            listadoPersonasBusqueda = _listadoPersonasCompleto;
+            _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
+            //_listadoPersonasCompleto = _listadoPersonasBusqueda.Result;
+            //NotifyPropertyChanged("listadoPersonasBusqueda");
         }
+
+        #region mostrarErrores
         private async void mostrarErrorBorrar()
         {
             var dialog = new MessageDialog("No se pudo borrar la persona");
@@ -465,6 +471,7 @@ namespace UI.ViewModels
             var dialog = new MessageDialog("Algo ha ido horriblemente mal wtf");
             await dialog.ShowAsync();
         }
+        #endregion
 
         /// <summary>
         /// Función que se encarga de comprobar si los datos que hay escritos en los textboxes, datepickers y comboboxes son correctos
