@@ -273,11 +273,9 @@ namespace UI.ViewModels
 
                     if ((int)result.Id == 0)
                     {
-                        int filas = ClsManejadoraPersona_BL.CrearPersona_BL(_personaSeleccionada);
+                        bool guardado = await ClsManejadoraPersona_BL.CrearPersona_BL(_personaSeleccionada);
 
-                        if (filas == 0)
-                            mostrarErrorCrear();
-                        else if (filas == 1)
+                        if (guardado)
                         {
                             mostrarExitoCrear();
                             _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
@@ -286,7 +284,7 @@ namespace UI.ViewModels
                             textoBusqueda = "";
                         }
                         else
-                            mostrarWTF();
+                            mostrarErrorCrear();
                     }
                 }
                 catch (SqlException) { mostrarErrorBorrar(); }
@@ -312,11 +310,9 @@ namespace UI.ViewModels
 
                 if ((int)result.Id == 0)
                 {
-                    int filas = ClsManejadoraPersona_BL.BorrarPorID_BL(_personaSeleccionada.idPersona);
+                    bool borrado = await ClsManejadoraPersona_BL.BorrarPorID_BL(_personaSeleccionada.idPersona);
 
-                    if (filas == 0)
-                        mostrarErrorBorrar();
-                    else if (filas == 1)
+                    if (borrado)
                     {
                         mostrarExitoBorrar();
                         _listadoPersonasBusqueda.Result.Remove(_personaSeleccionada);
@@ -324,7 +320,7 @@ namespace UI.ViewModels
                         textoBusqueda = _textoBusqueda;
                     }
                     else
-                        mostrarWTF();
+                        mostrarErrorBorrar();
                 }
             }
             catch (SqlException) { mostrarErrorBorrar(); }
@@ -365,11 +361,9 @@ namespace UI.ViewModels
 
                     if ((int)result.Id == 0)
                     {
-                        int filas = ClsManejadoraPersona_BL.ActualizarPersona_BL(_personaSeleccionada);
+                        bool actualizado = await ClsManejadoraPersona_BL.ActualizarPersona_BL(_personaSeleccionada);
 
-                        if (filas == 0)
-                            mostrarErrorActualizar();
-                        else if (filas == 1)
+                        if (actualizado)
                         {
                             mostrarExitoActualizar();
                             _listadoPersonasBusqueda = new NotifyTaskCompletion<ObservableCollection<ClsPersona>>(ClsListadoPersonas_BL.listadoCompletoPersonas_BL());
@@ -378,7 +372,7 @@ namespace UI.ViewModels
                             textoBusqueda = "";
                         }
                         else
-                            mostrarWTF();
+                            mostrarErrorActualizar();
                     }
                 }
                 catch (SqlException) { mostrarErrorBorrar(); }

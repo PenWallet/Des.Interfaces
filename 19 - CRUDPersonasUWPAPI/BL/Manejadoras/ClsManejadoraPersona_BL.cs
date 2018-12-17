@@ -17,25 +17,25 @@ namespace BL.Manejadoras
             return p1;
         }
 
-        public static int BorrarPorID_BL(int id)
+        public static async Task<bool> BorrarPorID_BL(int id)
         {
-            int filas = ClsManejadoraPersona_DAL.BorrarPorID_DAL(id);
+            bool guardado = await ClsManejadoraPersona_DAL.BorrarPorID_DAL(id);
 
-            return filas;
+            return guardado;
         }
 
-        public static int CrearPersona_BL(ClsPersona p1)
+        public static async Task<bool> CrearPersona_BL(ClsPersona p1)
         {
-            int filas = ClsManejadoraPersona_DAL.CrearPersona_DAL(p1);
+            bool guardado = await ClsManejadoraPersona_DAL.CrearPersona_DAL(p1);
 
-            return filas;
+            return guardado;
         }
 
-        public static int ActualizarPersona_BL(ClsPersona p1)
+        public static async Task<bool> ActualizarPersona_BL(ClsPersona p1)
         {
-            int filas = ClsManejadoraPersona_DAL.ActualizarPersona_DAL(p1);
+            bool guardado = await ClsManejadoraPersona_DAL.ActualizarPersona_DAL(p1);
 
-            return filas;
+            return guardado;
         }
     }
 }
