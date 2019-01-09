@@ -8,7 +8,7 @@ namespace DAL.Conexion
 {
     public class ClsUriBase
     {
-        private static readonly string _uri = "https://apipennypersonas.azurewebsites.net/api/";
+        private static readonly string _uri = "https://apipennypersonas2.azurewebsites.net/api/";
 
         public static string uri
         {

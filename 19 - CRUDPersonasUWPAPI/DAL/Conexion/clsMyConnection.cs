@@ -35,7 +35,7 @@ namespace DAL.Listados
         public clsMyConnection()
         {
             // this.server = "(local)";
-            this.server = "pennypersonas.database.windows.net";
+            this.server = "pennypersonas2.database.windows.net";
 
             this.dataBase = "PersonasDB";
             this.user = "Prueba";
