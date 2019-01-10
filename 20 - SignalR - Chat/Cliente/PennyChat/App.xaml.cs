@@ -40,7 +40,7 @@ namespace PennyChat
 
         public void SignalR()
         {
-            conn = new HubConnection("http://chatnervion.azurewebsites.net");
+            conn = new HubConnection("http://localhost:50269/");
             proxy = conn.CreateHubProxy("ChatHub");
             conn.Start();
 

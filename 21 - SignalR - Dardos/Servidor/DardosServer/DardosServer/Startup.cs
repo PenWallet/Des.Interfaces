@@ -1,15 +1,14 @@
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(PennyChatService.Startup))]
+[assembly: OwinStartup(typeof(DardosServer.Startup))]
 
-namespace PennyChatService
+namespace DardosServer
 {
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureMobileApp(app);
             app.MapSignalR();
         }
     }
