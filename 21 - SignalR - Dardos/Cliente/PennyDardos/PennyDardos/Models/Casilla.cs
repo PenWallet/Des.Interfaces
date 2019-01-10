@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DardosServer.Models
+namespace PennyDardos.Models
 {
     public class Casilla
     {
         public int id { get; set; }
-        public bool isBalloon { get;  set; }
+        public bool isBalloon { get; set; }
         public bool isPopped;
         public string image { get; set; }  //Image can be null, balloon or popped
 

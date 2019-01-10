@@ -1,0 +1,62 @@
+﻿<Page
+    Name="JuegoPrincipal"
+    x:Class="PennyDardos.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PennyDardos"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PennyDardos.ViewModels"
+    xmlns:conv="using:PennyDardos.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemColorGrayTextBrush}">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <conv:ImageStringConverter x:Key="ImageConverter"/>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- GridView de los globos -->
+        <GridView Grid.Row="0" ItemsSource="{Binding casillas}" IsItemClickEnabled="True" ItemClick="ClickBalloon">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" BorderThickness="5">
+                        <Image Source="{Binding Path=image, Converter={StaticResource ImageConverter}}" Height="100" Width="100"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <Grid Row="1" Background="LightSkyBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
+                <TextBlock Text="Puntuación global:" Margin="10" FontSize="20"/>
+                <TextBlock Name="puntuacionGlobal" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding puntuacionGlobal}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
+                <TextBlock Text="Tu puntuación:" Margin="10" FontSize="20"/>
+                <TextBlock Name="puntuacionPersonal" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding puntuacionPersonal}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Height="Auto" HorizontalAlignment="Right">
+                <TextBlock Text="Jugadores en línea:" Margin="0,10,10,10" FontSize="20"/>
+                <TextBlock FontSize="20" Margin="0, 10, 10, 10" Text="{Binding jugadoresEnLinea}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

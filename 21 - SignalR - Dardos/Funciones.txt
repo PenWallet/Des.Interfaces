@@ -1,0 +1,9 @@
+CLIENT-SIDE FUNCTIONS:
+popBalloon(int posBalloon)
+addOnePoint()
+loadBalloons(Casilla[] casilla)
+updateGlobalScore(int score)
+updateNumberOfPlayers(int numberOfPlayers)
+
+SERVER-SIDE FUNCTIONS:
+press(int posBalloon)
