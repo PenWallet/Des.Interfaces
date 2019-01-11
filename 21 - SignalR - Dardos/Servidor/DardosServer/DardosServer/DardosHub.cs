@@ -13,25 +13,29 @@ namespace DardosServer
     {
         public void press(int posBalloon)
         {
-            //Explotamos el globo en los otros clientes
-            Clients.All.popBalloon(posBalloon);
-            GameInfo.casillas[posBalloon].popBalloon();
-            GameInfo.poppedBalloons++;
-            GameInfo.globalScore++;
-
-            //Le damos el punto por explotar el globo al jugador que lo haya explotado
-            Clients.Caller.addOnePoint();
-            GameInfo.personalScores[Context.ConnectionId]++;
-
-            //Actualizamos la puntuación global de todos los jugadores
-            Clients.All.updateGlobalScore(GameInfo.globalScore);
-
-            //Si ya no quedan globos por explotar
-            if (GameInfo.poppedBalloons == 7)
+            //En caso de que alguien haya pulsado antes, nos aseguramos de que el globo sigue sin ser explotado
+            if(!GameInfo.casillas[posBalloon].isPopped)
             {
-                GameInfo.poppedBalloons = 0;
-                GestoraCasilla.generarCasillas();
-                Clients.All.loadBalloons(GameInfo.casillas);
+                //Explotamos el globo en los otros clientes
+                GameInfo.casillas[posBalloon].popBalloon();
+                Clients.All.popBalloon(posBalloon);
+                GameInfo.poppedBalloons++;
+                GameInfo.globalScore++;
+
+                //Le damos el punto por explotar el globo al jugador que lo haya explotado
+                Clients.Caller.addOnePoint();
+                GameInfo.personalScores[Context.ConnectionId]++;
+
+                //Actualizamos la puntuación global de todos los jugadores
+                Clients.All.updateGlobalScore(GameInfo.globalScore);
+
+                //Si ya no quedan globos por explotar
+                if (GameInfo.poppedBalloons == 7)
+                {
+                    GameInfo.poppedBalloons = 0;
+                    GestoraCasilla.generarCasillas();
+                    Clients.All.loadBalloons(GameInfo.casillas);
+                }
             }
         }
 

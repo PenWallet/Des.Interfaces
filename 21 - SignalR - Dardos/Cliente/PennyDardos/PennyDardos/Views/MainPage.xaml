@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <!-- GridView de los globos -->
-        <GridView Grid.Row="0" ItemsSource="{Binding casillas}" IsItemClickEnabled="True" ItemClick="ClickBalloon">
+        <GridView Grid.Row="0" ItemsSource="{Binding casillas}" SelectedIndex="{Binding casillaSeleccionada, Mode=TwoWay}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" BorderThickness="5">

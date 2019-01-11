@@ -9,8 +9,6 @@ namespace PennyDardos.Models
     public class CasillaVM : clsVMBase
     {
         private string _image; //Image can be null, balloon or popped
-
-        public int id { get; set; }
         public bool isBalloon { get; set; }
         public bool isPopped;
         public string image
@@ -29,15 +27,13 @@ namespace PennyDardos.Models
 
         public CasillaVM()
         {
-            id = 0;
             isBalloon = false;
             isPopped = false;
             _image = "null";
         }
 
-        public CasillaVM(int id, bool isBalloon, bool isPopped)
+        public CasillaVM(bool isBalloon, bool isPopped)
         {
-            this.id = id;
             this.isBalloon = isBalloon;
             this.isPopped = isPopped;
             this._image = isBalloon ? (isPopped ? "popped" : "balloon") : "null";

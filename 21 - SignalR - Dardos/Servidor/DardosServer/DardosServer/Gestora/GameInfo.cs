@@ -8,7 +8,7 @@ namespace DardosServer.Gestora
 {
     public static class GameInfo
     {
-        public static Casilla[] casillas { get; set; }
+        public static List<Casilla> casillas { get; set; }
         public static int globalScore { get; set; }
         public static IDictionary<string, int> personalScores { get; set; }
         public static int poppedBalloons { get; set; }

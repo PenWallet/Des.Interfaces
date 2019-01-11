@@ -10,47 +10,41 @@ namespace DardosServer.Gestora
     {
         public static void generarCasillas()
         {
-            Casilla globo = new Casilla(0, true, false);
-            Casilla noGlobo = new Casilla();
-            Casilla[] casillas = new Casilla[16];
+            List<Casilla> casillasShuffled = new List<Casilla>();
+            int globosInsertados = 0;
 
-            //Son globos: 0, 2, 3, 9, 12, 13, 15
-            casillas[0] = new Casilla(0, true, false);
-            casillas[2] = new Casilla(2, true, false);
-            casillas[3] = new Casilla(3, true, false);
-            casillas[9] = new Casilla(9, true, false);
-            casillas[12] = new Casilla(12, true, false);
-            casillas[13] = new Casilla(13, true, false);
-            casillas[15] = new Casilla(15, true, false);
-
-            //Los demás no lo son
-            casillas[1] = new Casilla(1, false, false);
-            casillas[4] = new Casilla(4, false, false);
-            casillas[5] = new Casilla(5, false, false);
-            casillas[6] = new Casilla(6, false, false);
-            casillas[7] = new Casilla(7, false, false);
-            casillas[8] = new Casilla(8, false, false);
-            casillas[10] = new Casilla(10, false, false);
-            casillas[11] = new Casilla(11, false, false);
-            casillas[14] = new Casilla(14, false, false);
-
-            GameInfo.casillas = casillas;
-        }
-
-        /*public static bool checkAllBalloonsPopped()
-        {
-            bool allPopped = true;
-            Casilla casilla;
-            for(int i = 0; i < GameInfo.casillas.Length && allPopped; i++)
+            for (; globosInsertados < 7; globosInsertados++)
             {
-                casilla = GameInfo.casillas[i];
-                if (casilla.isBalloon && !casilla.isPopped)
-                    allPopped = false;
-
-                //allPopped = !(casilla.isBalloon && !casilla.isPopped);
+                casillasShuffled.Add(new Casilla(true, false));
+            }
+            for (; globosInsertados < 16; globosInsertados++)
+            {
+                casillasShuffled.Add(new Casilla());
             }
 
-            return allPopped;
-        }*/
+            shuffle(ref casillasShuffled);
+
+            GameInfo.casillas = casillasShuffled;
+        }
+
+        #region Métodos aportados por Nachete
+        private static void shuffle(ref List<Casilla> casillas)
+        {
+            Random random = new Random();
+
+            for (int i = casillas.Count - 1; i > 0; i--)
+            {
+                int toSwap = random.Next(0, i);
+                swap(ref casillas, i, toSwap);
+            }
+        }
+        
+        private static void swap(ref List<Casilla> casillas, int indexOne, int indexTwo)
+        {
+            Casilla log = casillas[indexOne];
+            casillas[indexOne] = casillas[indexTwo];
+            casillas[indexTwo] = log;
+        }
+        #endregion
     }
 }
