@@ -8,14 +8,16 @@ namespace PennyDardos.Models
     public class Casilla
     {
         public bool isBalloon { get; set; }
-        public bool isPopped;
+        public bool isPopped { get; set; }
         public string image { get; set; }  //Image can be null, balloon or popped
+        public string background { get; set; }
 
         public Casilla()
         {
             isBalloon = false;
             isPopped = false;
             image = "null";
+            background = "Transparent";
         }
 
         public Casilla(bool isBalloon, bool isPopped)
@@ -23,21 +25,14 @@ namespace PennyDardos.Models
             this.isBalloon = isBalloon;
             this.isPopped = isPopped;
             this.image = isBalloon ? (isPopped ? "popped" : "balloon") : "null";
+            this.background = "Transparent";
         }
 
-        public bool getIsPopped()
-        {
-            return this.isBalloon ? this.isPopped : false;
-        }
-
-        public void setIsPopped(bool isPopped)
-        {
-            this.isPopped = isPopped;
-        }
-
-        public void popBalloon()
+        public void popBalloon(string color)
         {
             this.isPopped = true;
+            this.image = "popped";
+            this.background = color;
         }
     }
 }

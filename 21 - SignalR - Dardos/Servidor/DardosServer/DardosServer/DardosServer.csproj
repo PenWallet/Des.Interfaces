@@ -121,13 +121,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="DardosHub.cs" />
+    <Compile Include="Gestora\GestoraJugadores.cs" />
+    <Compile Include="Hubs\LoginHub.cs" />
+    <Compile Include="Hubs\DardosHub.cs" />
     <Compile Include="Gestora\GameInfo.cs" />
     <Compile Include="Gestora\GestoraCasilla.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Casilla.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Jugador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

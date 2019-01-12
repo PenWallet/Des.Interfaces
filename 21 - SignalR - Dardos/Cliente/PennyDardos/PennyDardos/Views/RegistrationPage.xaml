@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="PennyDardos.Views.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PennyDardos.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:PennyDardos.ViewModels" 
+    Background="LightBlue">
+
+    <Page.DataContext>
+        <vm:RegistrationViewModel/>
+    </Page.DataContext>
+
+    <RelativePanel>
+        <StackPanel Name="spAll" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+            <StackPanel Name="spUsername" Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Name="txtTitleNick" HorizontalAlignment="Center" Text="Introduce un nickname" FontSize="20"/>
+                <TextBox Name="txtNick" TextAlignment="Center" FontSize="20" MaxLength="15"/>
+            </StackPanel>
+
+            <GridView Name="gridColors" Width="450" Height="350" ItemsSource="{Binding colors}" IsItemClickEnabled="True" SelectedValue="{Binding selectedColor, Mode=TwoWay}" RelativePanel.RightOf="spUsername" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20, 0, 0, 0">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" BorderThickness="5">
+                            <Rectangle Height="100" Width="100" Fill="{Binding Path=color}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+
+        <Button Name="btnEnter" Content="Conectarse" FontSize="20" Background="CadetBlue" Click="LoginClick" RelativePanel.Below="spAll" Width="150" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        <TextBlock Name="txtError" Foreground="Red" Visibility="Collapsed" RelativePanel.Below="btnEnter" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+    </RelativePanel>
+</Page>

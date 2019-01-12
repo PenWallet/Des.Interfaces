@@ -12,33 +12,32 @@ namespace PennyDardos.ViewModels
 {
     public class MainPageViewModel : clsVMBase
     {
-        public MainPageViewModel()
+        public MainPageViewModel(JugadorVM jugadorVM)
         {
             _casillas = new List<CasillaVM>();
             _puntuacionGlobal = 0;
-            _puntuacionPersonal = 0;
-            _jugadoresEnLinea = 0;
             _casillaSeleccionada = 0;
+            _jugador = jugadorVM;
 
             #region SignalR
-            conn = new HubConnection("https://pennydardos.azurewebsites.net/");
+            conn = new HubConnection("https://pennydardos.azurewebsites.net/", $"username={jugador.nombre}&color={jugador.color}");
             proxy = conn.CreateHubProxy("DardosHub");
             conn.Start();
 
             proxy.On<int>("updateGlobalScore", updateGlobalScore);
-            proxy.On<int>("updateNumberOfPlayers", updateNumberOfPlayers);
+            proxy.On<List<Jugador>>("updateRanking", updateRanking);
             proxy.On<List<Casilla>>("loadBalloons", loadBalloons);
-            proxy.On("addOnePoint", addOnePoint);
-            proxy.On<int>("popBalloon", popBalloon);
+            proxy.On<int>("updatePersonalScore", updatePersonalScore);
+            proxy.On<int, string>("popBalloon", popBalloon);
             #endregion
         }
 
         #region Propiedades privadas
         private List<CasillaVM> _casillas;
         private int _puntuacionGlobal;
-        private int _puntuacionPersonal;
-        private int _jugadoresEnLinea;
         private int _casillaSeleccionada;
+        private List<Jugador> _ranking;
+        private JugadorVM _jugador;
         #endregion
 
         #region Propiedades públicas
@@ -72,34 +71,6 @@ namespace PennyDardos.ViewModels
             }
         }
 
-        public int puntuacionPersonal
-        {
-            get
-            {
-                return _puntuacionPersonal;
-            }
-
-            set
-            {
-                _puntuacionPersonal = value;
-                NotifyPropertyChanged("puntuacionPersonal");
-            }
-        }
-
-        public int jugadoresEnLinea
-        {
-            get
-            {
-                return _jugadoresEnLinea;
-            }
-
-            set
-            {
-                _jugadoresEnLinea = value;
-                NotifyPropertyChanged("jugadoresEnLinea");
-            }
-        }
-
         public int casillaSeleccionada
         {
             get
@@ -109,7 +80,7 @@ namespace PennyDardos.ViewModels
 
             set
             {
-                if(value != -1)
+                if (value != -1)
                 {
                     _casillaSeleccionada = value;
                     CasillaVM casilla = _casillas[_casillaSeleccionada];
@@ -118,18 +89,46 @@ namespace PennyDardos.ViewModels
                         proxy.Invoke("press", _casillaSeleccionada);
                     }
                 }
-                
+
+            }
+        }
+
+        public List<Jugador> ranking
+        {
+            get
+            {
+                return _ranking;
+            }
+
+            set
+            {
+                _ranking = value;
+                NotifyPropertyChanged("ranking");
+            }
+        }
+
+        public JugadorVM jugador
+        {
+            get
+            {
+                return _jugador;
+            }
+
+            set
+            {
+                _jugador = value;
+                NotifyPropertyChanged("jugador");
             }
         }
         #endregion
 
         #region Funciones Server
-        public async void popBalloon(int posBalloon)
+        public async void popBalloon(int posBalloon, string color)
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
             () =>
             {
-                casillas[posBalloon].popBalloon();
+                casillas[posBalloon].popBalloon(color);
             }
             );
 
@@ -139,12 +138,12 @@ namespace PennyDardos.ViewModels
             mainVM.casillas = listadoNuevo;*/
         }
 
-        public async void addOnePoint()
+        public async void updatePersonalScore(int score)
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
             () =>
             {
-                puntuacionPersonal++;
+                _jugador.puntuacion = score;
             }
             );
         }
@@ -157,7 +156,7 @@ namespace PennyDardos.ViewModels
                 List<CasillaVM> listado = new List<CasillaVM>();
                 foreach (Casilla casilla in casillas)
                 {
-                    listado.Add(new CasillaVM(casilla.isBalloon, casilla.isPopped));
+                    listado.Add(new CasillaVM(casilla.isBalloon, casilla.isPopped, casilla.background));
                 }
 
                 this.casillas = listado;
@@ -175,12 +174,12 @@ namespace PennyDardos.ViewModels
             );
         }
 
-        public async void updateNumberOfPlayers(int number)
+        public async void updateRanking(List<Jugador> ranking)
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
             () =>
             {
-                jugadoresEnLinea = number;
+                this.ranking = ranking;
             }
             );
         }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
-using DardosServer.Models;
 using DardosServer.Gestora;
 using System.Threading.Tasks;
+using DardosServer.Models;
 
-namespace DardosServer
+namespace DardosServer.Hubs
 {
     public class DardosHub : Hub
     {
@@ -16,21 +16,26 @@ namespace DardosServer
             //En caso de que alguien haya pulsado antes, nos aseguramos de que el globo sigue sin ser explotado
             if(!GameInfo.casillas[posBalloon].isPopped)
             {
+                string balloonColor = GameInfo.jugadores[Context.ConnectionId].color;
+
                 //Explotamos el globo en los otros clientes
-                GameInfo.casillas[posBalloon].popBalloon();
-                Clients.All.popBalloon(posBalloon);
+                GameInfo.casillas[posBalloon].popBalloon(balloonColor);
+                Clients.All.popBalloon(posBalloon, balloonColor);
                 GameInfo.poppedBalloons++;
-                GameInfo.globalScore++;
 
                 //Le damos el punto por explotar el globo al jugador que lo haya explotado
-                Clients.Caller.addOnePoint();
-                GameInfo.personalScores[Context.ConnectionId]++;
+                GameInfo.jugadores[Context.ConnectionId].puntuacion++;
+                Clients.Caller.updatePersonalScore(GameInfo.jugadores[Context.ConnectionId].puntuacion);
 
                 //Actualizamos la puntuación global de todos los jugadores
+                GameInfo.globalScore++;
                 Clients.All.updateGlobalScore(GameInfo.globalScore);
 
+                //Actualizamos el ranking de todos los jugadores ordenado por puntuación
+                Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderBy(x => x.puntuacion));
+
                 //Si ya no quedan globos por explotar
-                if (GameInfo.poppedBalloons == 7)
+                if (GameInfo.poppedBalloons == GameInfo.numberOfBalloons)
                 {
                     GameInfo.poppedBalloons = 0;
                     GestoraCasilla.generarCasillas();
@@ -42,8 +47,9 @@ namespace DardosServer
         //Cuando un jugador se desconecte
         public override Task OnDisconnected(bool stopCalled)
         {
-            //Cuando se desconecte, quitamos su entrada del diccionario
-            GameInfo.personalScores.Remove(Context.ConnectionId);
+            //Cuando se desconecte, quitamos su entrada del diccionario y actualizamos el ranking de todos
+            GameInfo.jugadores.Remove(Context.ConnectionId);
+            Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderBy(x => x.puntuacion));
 
             //Restamos uno al número de jugadores concurrentes
             GameInfo.numberOfPlayers--;
@@ -56,16 +62,15 @@ namespace DardosServer
         public override Task OnConnected()
         {
             //Cuando se conecte, agregamos su entrada al diccionario
-            GameInfo.personalScores.Add(Context.ConnectionId, 0);
-
-            //Sumamos uno al número de jugadores concurrentes
-            GameInfo.numberOfPlayers++;
-            Clients.All.updateNumberOfPlayers(GameInfo.numberOfPlayers);
+            GameInfo.jugadores.Add(Context.ConnectionId, new Jugador(Context.QueryString["username"], 0, Context.QueryString["color"]));
 
             //Le mandamos la información de la partida
             Clients.Caller.loadBalloons(GameInfo.casillas);
             Clients.Caller.updateGlobalScore(GameInfo.globalScore);
-
+            List<Jugador> listado = GameInfo.jugadores.Values.ToList();
+            listado.OrderBy(x => x.puntuacion);
+            Clients.Caller.updateRanking(listado);
+            
             return base.OnConnected();
         }
     }

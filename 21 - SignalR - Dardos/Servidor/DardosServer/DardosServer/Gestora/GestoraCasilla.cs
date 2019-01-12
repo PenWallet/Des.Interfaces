@@ -13,11 +13,11 @@ namespace DardosServer.Gestora
             List<Casilla> casillasShuffled = new List<Casilla>();
             int globosInsertados = 0;
 
-            for (; globosInsertados < 7; globosInsertados++)
+            for (; globosInsertados < GameInfo.numberOfBalloons; globosInsertados++)
             {
                 casillasShuffled.Add(new Casilla(true, false));
             }
-            for (; globosInsertados < 16; globosInsertados++)
+            for (; globosInsertados < GameInfo.numberOfTiles; globosInsertados++)
             {
                 casillasShuffled.Add(new Casilla());
             }
