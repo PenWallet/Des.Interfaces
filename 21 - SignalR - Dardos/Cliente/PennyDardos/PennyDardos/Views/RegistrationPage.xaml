@@ -20,7 +20,7 @@
                 <TextBox Name="txtNick" TextAlignment="Center" FontSize="20" MaxLength="15"/>
             </StackPanel>
 
-            <GridView Name="gridColors" Width="450" Height="350" ItemsSource="{Binding colors}" IsItemClickEnabled="True" SelectedValue="{Binding selectedColor, Mode=TwoWay}" RelativePanel.RightOf="spUsername" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20, 0, 0, 0">
+            <GridView Name="gridColors" Width="500" Height="350" ItemsSource="{Binding colors}" IsItemClickEnabled="True" SelectedValue="{Binding selectedColor, Mode=TwoWay}" RelativePanel.RightOf="spUsername" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20, 0, 0, 0">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" BorderThickness="5">

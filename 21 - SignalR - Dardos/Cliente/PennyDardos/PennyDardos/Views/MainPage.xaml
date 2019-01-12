@@ -31,7 +31,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" BorderThickness="5" Background="{Binding Path=background}">
-                        <Image Source="{Binding Path=image, Converter={StaticResource ImageConverter}}" Height="150" Width="150"/>
+                        <Image Source="{Binding Path=image, Converter={StaticResource ImageConverter}}" Height="120" Width="120"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
