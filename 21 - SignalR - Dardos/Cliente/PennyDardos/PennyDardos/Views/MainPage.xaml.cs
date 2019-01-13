@@ -35,5 +35,6 @@ namespace PennyDardos.Views
 
             base.OnNavigatedTo(e);
         }
+
     }
 }

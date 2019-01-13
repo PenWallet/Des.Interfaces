@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -105,6 +106,17 @@ namespace PennyDardos.Views
                 vm.colors = listadoFinal;
             }
             );
+        }
+
+        private void gridColorPointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if(vm.colors == null || vm.colors.Count == 0)
+                Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Wait, 10);
+        }
+
+        private void gridColorPointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DardosServer.Hubs
                 Clients.All.updateGlobalScore(GameInfo.globalScore);
 
                 //Actualizamos el ranking de todos los jugadores ordenado por puntuación
-                Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderBy(x => x.puntuacion));
+                Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderByDescending(x => x.puntuacion));
 
                 //Si ya no quedan globos por explotar
                 if (GameInfo.poppedBalloons == GameInfo.numberOfBalloons)
@@ -49,7 +49,7 @@ namespace DardosServer.Hubs
         {
             //Cuando se desconecte, quitamos su entrada del diccionario y actualizamos el ranking de todos
             GameInfo.jugadores.Remove(Context.ConnectionId);
-            Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderBy(x => x.puntuacion));
+            Clients.All.updateRanking(GameInfo.jugadores.Values.ToList().OrderByDescending(x => x.puntuacion));
 
             //Restamos uno al número de jugadores concurrentes
             GameInfo.numberOfPlayers--;
@@ -67,10 +67,11 @@ namespace DardosServer.Hubs
             //Le mandamos la información de la partida
             Clients.Caller.loadBalloons(GameInfo.casillas);
             Clients.Caller.updateGlobalScore(GameInfo.globalScore);
-            List<Jugador> listado = GameInfo.jugadores.Values.ToList();
-            listado.OrderBy(x => x.puntuacion);
-            Clients.Caller.updateRanking(listado);
-            
+            Clients.Caller.updateRanking(GameInfo.jugadores.Values.ToList().OrderByDescending(x => x.puntuacion));
+
+            //Y llamamos al método que indica que todo ha cargado
+            Clients.Caller.onConnectedIsDone();
+
             return base.OnConnected();
         }
     }

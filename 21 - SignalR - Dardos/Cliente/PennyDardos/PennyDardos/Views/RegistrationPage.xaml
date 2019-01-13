@@ -5,8 +5,8 @@
     xmlns:local="using:PennyDardos.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     xmlns:vm="using:PennyDardos.ViewModels" 
+    mc:Ignorable="d"
     Background="LightBlue">
 
     <Page.DataContext>
@@ -20,7 +20,7 @@
                 <TextBox Name="txtNick" TextAlignment="Center" FontSize="20" MaxLength="15"/>
             </StackPanel>
 
-            <GridView Name="gridColors" Width="500" Height="350" ItemsSource="{Binding colors}" IsItemClickEnabled="True" SelectedValue="{Binding selectedColor, Mode=TwoWay}" RelativePanel.RightOf="spUsername" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20, 0, 0, 0">
+            <GridView PointerEntered="gridColorPointerEntered" PointerExited="gridColorPointerExited" Name="gridColors" Width="500" Height="350" ItemsSource="{Binding colors}" IsItemClickEnabled="True" SelectedValue="{Binding selectedColor, Mode=TwoWay}" RelativePanel.RightOf="spUsername" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="20, 0, 0, 0">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" BorderThickness="5">

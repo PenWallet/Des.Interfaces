@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:PennyDardos.ViewModels"
     xmlns:conv="using:PennyDardos.Converters"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="LightBlue">
 
@@ -75,5 +76,14 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+
+        <controls:Loading x:Name="Loading" IsLoading="{Binding isNotDoneLoading}" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="Black" Opacity="0.5">
+            <StackPanel Orientation="Horizontal" Padding="12">
+                <ProgressRing IsActive="True" Foreground="LightCyan" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="Obteniendo información de la partida..." Foreground="Black" VerticalAlignment="Center" Margin="10, 0, 0, 0" FontSize="20"/>
+            </StackPanel>
+        </controls:Loading>
+
     </Grid>
 </Page>
+    

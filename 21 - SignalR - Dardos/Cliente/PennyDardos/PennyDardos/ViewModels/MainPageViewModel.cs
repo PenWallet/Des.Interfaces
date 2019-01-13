@@ -18,6 +18,7 @@ namespace PennyDardos.ViewModels
             _puntuacionGlobal = 0;
             _casillaSeleccionada = 0;
             _jugador = jugadorVM;
+            _isNotDoneLoading = true;
 
             #region SignalR
             conn = new HubConnection("https://pennydardos.azurewebsites.net/", $"username={jugador.nombre}&color={jugador.color}");
@@ -29,6 +30,7 @@ namespace PennyDardos.ViewModels
             proxy.On<List<Casilla>>("loadBalloons", loadBalloons);
             proxy.On<int>("updatePersonalScore", updatePersonalScore);
             proxy.On<int, string>("popBalloon", popBalloon);
+            proxy.On("onConnectedIsDone", onConnectedIsDone);
             #endregion
         }
 
@@ -38,6 +40,7 @@ namespace PennyDardos.ViewModels
         private int _casillaSeleccionada;
         private List<Jugador> _ranking;
         private JugadorVM _jugador;
+        private bool _isNotDoneLoading;
         #endregion
 
         #region Propiedades públicas
@@ -120,6 +123,20 @@ namespace PennyDardos.ViewModels
                 NotifyPropertyChanged("jugador");
             }
         }
+
+        public bool isNotDoneLoading
+        {
+            get
+            {
+                return _isNotDoneLoading;
+            }
+
+            set
+            {
+                _isNotDoneLoading = value;
+                NotifyPropertyChanged("isNotDoneLoading");
+            }
+        }
         #endregion
 
         #region Funciones Server
@@ -131,11 +148,6 @@ namespace PennyDardos.ViewModels
                 casillas[posBalloon].popBalloon(color);
             }
             );
-
-            /*
-            List<CasillaVM> listadoNuevo = mainVM.casillas;
-            listadoNuevo[posBalloon].popBalloon();
-            mainVM.casillas = listadoNuevo;*/
         }
 
         public async void updatePersonalScore(int score)
@@ -180,6 +192,16 @@ namespace PennyDardos.ViewModels
             () =>
             {
                 this.ranking = ranking;
+            }
+            );
+        }
+
+        public async void onConnectedIsDone()
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+            () =>
+            {
+                this.isNotDoneLoading = false;
             }
             );
         }
