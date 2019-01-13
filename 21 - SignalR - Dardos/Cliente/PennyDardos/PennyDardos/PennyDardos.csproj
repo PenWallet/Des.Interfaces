@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Win32Resource>Assets\Resources\Resource.res</Win32Resource>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{552B4FDF-7BF2-476A-8C06-2D4AA7441EAA}</ProjectGuid>
@@ -131,6 +132,7 @@
     <Compile Include="Models\Casilla.cs" />
     <Compile Include="Models\ColorVM.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\CustomCursor.cs" />
     <Compile Include="Models\JugadorVM.cs" />
     <Compile Include="Models\Jugador.cs" />
     <Compile Include="ViewModels\clsVMBase.cs" />
@@ -152,10 +154,18 @@
     <None Include="PennyDardos_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Imagenes\banana.png" />
+    <Content Include="Assets\Imagenes\dart.png" />
     <Content Include="Assets\Imagenes\balloon.png" />
+    <Content Include="Assets\Imagenes\fukiya.png" />
+    <Content Include="Assets\Imagenes\knife.png" />
+    <Content Include="Assets\Imagenes\launcher.png" />
+    <Content Include="Assets\Imagenes\morningstar.png" />
     <Content Include="Assets\Imagenes\null.png" />
     <Content Include="Assets\Imagenes\popped.png" />
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Assets\Imagenes\sword.png" />
+    <Content Include="Assets\Resources\Resource.res" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

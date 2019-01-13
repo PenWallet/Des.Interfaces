@@ -32,8 +32,10 @@ namespace PennyDardos.Views
         public RegistrationPage()
         {
             this.InitializeComponent();
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 102);
             vm = new RegistrationViewModel();
             this.DataContext = vm;
+
             #region SignalR
             conn = new HubConnection("https://pennydardos.azurewebsites.net/");
             proxy = conn.CreateHubProxy("LoginHub");
@@ -116,7 +118,15 @@ namespace PennyDardos.Views
 
         private void gridColorPointerExited(object sender, PointerRoutedEventArgs e)
         {
-            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
+            //Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
+            Window.Current.CoreWindow.PointerCursor = vm.selectedCursor == null ? new CoreCursor(CoreCursorType.Arrow, 0) : vm.selectedCursor.cursor;
+        }
+
+        private void selectCursor(object sender, ItemClickEventArgs e)
+        {
+            CustomCursor customCursor = e.ClickedItem as CustomCursor;
+            vm.selectedCursor = customCursor;
+            Window.Current.CoreWindow.PointerCursor = customCursor.cursor;
         }
     }
 }
