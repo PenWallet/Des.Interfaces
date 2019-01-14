@@ -1,0 +1,6 @@
+102 CURSOR "banana.cur"
+103 CURSOR "dart-board.cur"
+104 CURSOR "knife.cur"
+106 CURSOR "launcher.cur"
+107 CURSOR "morningstar.cur"
+108 CURSOR "sword.cur"
