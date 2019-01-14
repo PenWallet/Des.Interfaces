@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PennyDardos.ViewModels;
 using Microsoft.AspNet.SignalR.Client;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace PennyDardos.ViewModels
 {
@@ -146,8 +147,19 @@ namespace PennyDardos.ViewModels
             () =>
             {
                 casillas[posBalloon].popBalloon(color);
+                playPopSound();
             }
             );
+        }
+
+        private async void playPopSound()
+        {
+            MediaElement mysong = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("pop.wav");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            mysong.SetSource(stream, file.ContentType);
+            mysong.Play();
         }
 
         public async void updatePersonalScore(int score)

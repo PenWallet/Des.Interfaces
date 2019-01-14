@@ -154,6 +154,7 @@
     <None Include="PennyDardos_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Imagenes\boring.png" />
     <Content Include="Assets\Imagenes\banana.png" />
     <Content Include="Assets\Imagenes\dart.png" />
     <Content Include="Assets\Imagenes\balloon.png" />
@@ -165,6 +166,7 @@
     <Content Include="Assets\Imagenes\popped.png" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Assets\Imagenes\sword.png" />
+    <Content Include="Assets\pop.wav" />
     <Content Include="Assets\Resources\Resource.res" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

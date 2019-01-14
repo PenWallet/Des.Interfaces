@@ -45,13 +45,14 @@ namespace PennyDardos.ViewModels
         private List<CustomCursor> generarListadoCursores()
         {
             List<CustomCursor> listado = new List<CustomCursor>();
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Plátano", "banana"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 101), "Plátano", "banana"));
             listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Dardo", "dart"));
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Fukiya", "fukiya"));
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Cuchillo", "knife"));
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Bazooka", "launcher"));
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Maza", "morningstar"));
-            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 102), "Espada", "sword"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 103), "Fukiya", "fukiya"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 104), "Cuchillo", "knife"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 105), "Bazooka", "launcher"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 106), "Maza", "morningstar"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Custom, 107), "Espada", "sword"));
+            listado.Add(new CustomCursor(new CoreCursor(CoreCursorType.Arrow, 0), "Aburrido", "boring"));
 
             return listado;
         }
